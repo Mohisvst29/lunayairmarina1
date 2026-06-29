@@ -452,16 +452,34 @@
         },
         "faqs": [
           {
-            "q": "What is included in the Yacht Management program?",
-            "a": "It covers complete administrative support, professional financial reporting, predictive maintenance planning, and crew management.",
-            "qAr": "ماذا يشمل برنامج إدارة اليخوت؟",
-            "aAr": "يشمل الدعم الإداري الكامل، والتقارير المالية الاحترافية، وتخطيط الصيانة التنبؤية، وإدارة الطاقم."
+            "q": "What does full-service yacht management include?",
+            "a": "We coordinate maintenance schedules, crew management, provisioning, compliance paperwork, and voyage support so you can focus entirely on your guests.",
+            "qAr": "ماذا تتضمن إدارة اليخوت الشاملة؟",
+            "aAr": "تنسق جداول الصيانة، وإدارة الطاقم، والتزويد، وأعمال الامتثال، ودعم الرحلات لتتفرغ بالكامل لضيوفك."
           },
           {
-            "q": "How do you vet the marine crew?",
-            "a": "All crew profiles go through rigorous background checks, STCW certification verification, and hospitality training assessments.",
-            "qAr": "كيف تختارون وتدربون طواقم اليخوت؟",
-            "aAr": "تخضع جميع ملفات الطواقم لفحوصات خلفية صارمة، والتحقق من شهادات STCW، وتقييمات تدريب الضيافة."
+            "q": "Can you assist with insurance and registration?",
+            "a": "Our compliance desk keeps every registry, flag, and insurance document current and handles renewals ahead of deadlines to avoid delays at port.",
+            "qAr": "هل يمكنكم المساعدة في التأمين والتسجيل؟",
+            "aAr": "يتولى قسم الالتزام لدينا تحديث كل السجلات والرايات ووثائق التأمين والتجديد المسبق لها لتجنب أي تأخير في الموانئ."
+          },
+          {
+            "q": "Do you operate across different regions?",
+            "a": "Yes, our captains and partner shipyards span the Mediterranean, Gulf, and Indian Ocean corridors to make seasonal repositioning effortless.",
+            "qAr": "هل تعملون في مناطق مختلفة؟",
+            "aAr": "نعم، يمتد عمل قباطنتنا وأحواضنا الشريكة عبر البحر المتوسط والخليج والمحيط الهندي لتسهيل إعادة التموضع الموسمي."
+          },
+          {
+            "q": "How do you maintain safety standards on board?",
+            "a": "We follow ISM and ISPS guidelines, conduct regular drills with your crew, and track every inspection digitally for full transparency.",
+            "qAr": "كيف تحافظون على معايير السلامة على متن اليخت؟",
+            "aAr": "نلتزم بإرشادات ISM وISPS، وننفذ تدريبات دورية مع طاقمك، ونتابع كل عمليات الفحص رقميًا لضمان الشفافية الكاملة."
+          },
+          {
+            "q": "Is support available outside office hours?",
+            "a": "A dedicated duty manager is reachable 24/7 for routing changes, technical incidents, or concierge requests.",
+            "qAr": "هل يتوفر الدعم خارج ساعات العمل؟",
+            "aAr": "مدير نوبات مخصص متاح على مدار الساعة لتغييرات المسار أو الحوادث التقنية أو طلبات الضيافة."
           }
         ]
       }

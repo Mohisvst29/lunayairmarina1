@@ -55,13 +55,19 @@ export default function FaqSection({
                     {String(index + 1).padStart(2, "0")}
                   </div>
                   <h3 className={styles.faqQuestion}>
-                    {language === "ar" ? faq.question?.ar : faq.question?.en}
+                    {language === "ar"
+                      ? (faq.question?.ar || faq.qAr || (typeof faq.question === 'string' ? faq.question : ""))
+                      : (faq.question?.en || faq.q || (typeof faq.question === 'string' ? faq.question : ""))}
                   </h3>
                   <span className={styles.faqIcon}>▼</span>
                 </summary>
 
                 <div className={styles.faqAnswer}>
-                  <p>{language === "ar" ? faq.answer?.ar : faq.answer?.en}</p>
+                  <p>
+                    {language === "ar"
+                      ? (faq.answer?.ar || faq.aAr || (typeof faq.answer === 'string' ? faq.answer : ""))
+                      : (faq.answer?.en || faq.a || (typeof faq.answer === 'string' ? faq.answer : ""))}
+                  </p>
                 </div>
               </details>
             ))
