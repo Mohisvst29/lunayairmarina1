@@ -1,0 +1,627 @@
+﻿.page {
+  background: #fff;
+  color: #0b1e3c;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: clamp(32px, 6vw, 72px);
+  padding: clamp(64px, 10vw, 140px) clamp(24px, 8vw, 120px);
+  min-height: 80vh;
+  background-image: linear-gradient(135deg, #040b1d, #071a3c 45%, #0f396d);
+  color: var(--text-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.heroBackdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(12, 79, 173, 0.32), transparent 55%),
+    radial-gradient(circle at 82% 12%, rgba(255, 255, 255, 0.12), transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroPattern {
+  position: absolute;
+  inset: -18%;
+  background:
+    conic-gradient(from 120deg at 50% 50%,
+      rgba(255, 255, 255, 0.08),
+      rgba(12, 79, 173, 0.12),
+      rgba(255, 255, 255, 0.08),
+      rgba(12, 79, 173, 0.05),
+      rgba(255, 255, 255, 0.08)),
+    radial-gradient(40% 40% at 72% 24%, rgba(0, 255, 214, 0.08), transparent 60%),
+    radial-gradient(32% 32% at 32% 70%, rgba(148, 114, 255, 0.12), transparent 70%);
+  mix-blend-mode: screen;
+  opacity: 0.65;
+  filter: saturate(1.05);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroGrid {
+  position: absolute;
+  inset: -8%;
+  background-image:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 140px 140px;
+  opacity: 0.18;
+  mask-image: radial-gradient(circle at 50% 50%, #000 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 0%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroBeams {
+  position: absolute;
+  inset: -12%;
+  background-image:
+    linear-gradient(115deg, rgba(12, 79, 173, 0.35) 0%, rgba(12, 79, 173, 0) 35%),
+    linear-gradient(245deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 28%);
+  mix-blend-mode: screen;
+  opacity: 0.55;
+  filter: blur(2px);
+  animation: beamShift 16s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroOrbs {
+  position: absolute;
+  inset: -8%;
+  background:
+    radial-gradient(24% 28% at 18% 32%, rgba(0, 255, 214, 0.15), transparent 70%),
+    radial-gradient(22% 26% at 82% 68%, rgba(255, 186, 120, 0.18), transparent 75%),
+    radial-gradient(30% 30% at 56% 18%, rgba(148, 114, 255, 0.22), transparent 70%);
+  mix-blend-mode: screen;
+  opacity: 0.6;
+  animation: orbFloat 12s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroNoise {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg,
+      rgba(255, 255, 255, 0.02) 0,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 2px),
+    repeating-linear-gradient(90deg,
+      rgba(255, 255, 255, 0.02) 0,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 2px);
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 12% 20% auto;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.25), transparent);
+  filter: blur(20px);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.heroCopy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.heroBadge {
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 5px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.heroCopy h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(48px, 8vw, 78px);
+  line-height: 1.1;
+  letter-spacing: 3px;
+}
+
+.heroLead {
+  max-width: 540px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.highlightGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.highlightCard {
+  padding: 22px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.highlightLabel {
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.highlightValue {
+  margin-top: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.highlightLink {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  color: #fef7f2;
+  text-decoration: none;
+  padding: 2px 6px;
+  border-radius: 12px;
+  transition: color 0.2s ease, transform 0.2s ease, text-shadow 0.2s ease;
+  max-width: 100%;
+}
+
+.highlightLink::after {
+  content: "↗";
+  font-size: 0.85em;
+  opacity: 0.7;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.highlightLink[data-variant="phone"]::after {
+  content: none;
+}
+
+.highlightLink[data-variant="email"]::after {
+  content: "✉";
+  font-size: 0.9rem;
+}
+
+.highlightLink:hover,
+.highlightLink:focus-visible {
+  color: #ded0ff;
+  text-shadow: 0 0 12px rgba(200, 183, 255, 0.65);
+  transform: translateX(3px);
+}
+
+.highlightLink:hover::after,
+.highlightLink:focus-visible::after {
+  transform: translateX(2px);
+  opacity: 1;
+}
+
+.highlightLink:focus-visible {
+  outline: 2px solid rgba(200, 183, 255, 0.45);
+  outline-offset: 4px;
+}
+
+.highlightLink[dir="ltr"] {
+  unicode-bidi: plaintext;
+}
+
+.highlightLink span {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-left: 8px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.highlightLink:hover span,
+.highlightLink:focus-visible span {
+  opacity: 0.95;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .highlightLink {
+    transition: none;
+    transform: none;
+    text-shadow: none;
+  }
+
+  .highlightLink::after {
+    transition: none;
+  }
+
+  .highlightLink:hover,
+  .highlightLink:focus-visible {
+    transform: none;
+  }
+
+  .highlightLink span {
+    transition: none;
+  }
+}
+
+.highlightHelper {
+  margin-top: 6px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.helperIcon {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f6d365, #fda085);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05),
+    0 0 8px rgba(253, 160, 133, 0.6);
+  vertical-align: middle;
+}
+
+.phoneIcon {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.25;
+}
+
+.heroMedia {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mediaGlow {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(12, 79, 173, 0.5), transparent 65%);
+  filter: blur(30px);
+  z-index: 0;
+}
+
+@keyframes beamShift {
+  0% {
+    transform: translateX(-2%) translateY(0) rotate(0.5deg);
+  }
+
+  50% {
+    transform: translateX(3%) translateY(-2%) rotate(-0.5deg);
+  }
+
+  100% {
+    transform: translateX(1%) translateY(-4%) rotate(0.25deg);
+  }
+}
+
+@keyframes orbFloat {
+  0% {
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+
+  100% {
+    transform: translateY(-14px);
+    filter: blur(1px);
+  }
+}
+
+.heroImage {
+  width: min(520px, 100%);
+  border-radius: 40px;
+  object-fit: cover;
+  box-shadow: 0 35px 70px rgba(6, 11, 30, 0.6);
+}
+
+.mediaCard {
+  position: absolute;
+  bottom: 12%;
+  left: 8%;
+  background: rgba(4, 6, 25, 0.85);
+  color: var(--text-light);
+  padding: 18px 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 200px;
+}
+
+.mediaCard strong {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  letter-spacing: 2px;
+}
+
+.mediaCard span {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.accessSection {
+  margin: clamp(48px, 8vw, 120px) auto;
+  padding: 0 clamp(24px, 8vw, 120px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.accessCard {
+  background: linear-gradient(165deg, #f4f7ff, #ffffff);
+  border-radius: 32px;
+  padding: 32px;
+  box-shadow: 0 30px 60px rgba(6, 26, 58, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid rgba(12, 79, 173, 0.08);
+}
+
+.accessLabel {
+  font-size: 18px;
+  color: #0c4fad;
+}
+
+.accessCard h2 {
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: #0a132e;
+}
+
+.accessCard p {
+  color: #4d5671;
+  line-height: 1.7;
+}
+
+.accessAction {
+  align-self: flex-start;
+  border: none;
+  background: transparent;
+  color: #0c4fad;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.mapSection {
+  padding: clamp(64px, 10vw, 140px) clamp(24px, 8vw, 120px) clamp(120px, 12vw, 180px);
+  background: radial-gradient(circle at 20% 20%, #f7edff, transparent 50%),
+    radial-gradient(circle at 80% 10%, #ebf2ff, transparent 45%),
+    #fbfbff;
+}
+
+.mapContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+
+.mapBadge {
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #8a7bff;
+  font-weight: 600;
+}
+
+.mapCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: #0a1c38;
+}
+
+.mapCopy h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(36px, 6vw, 56px);
+  line-height: 1.2;
+}
+
+.mapCopy p {
+  color: #4a4f6b;
+  line-height: 1.8;
+}
+
+.hoursList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+}
+
+.hoursList li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  color: #182346;
+  border-bottom: 1px solid rgba(9, 12, 44, 0.08);
+  padding-bottom: 8px;
+}
+
+.mapFrame {
+  position: relative;
+  border-radius: 48px;
+  overflow: hidden;
+  box-shadow: 0 35px 70px rgba(9, 13, 52, 0.25);
+}
+
+.mapImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.mapTag {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: rgba(4, 8, 27, 0.85);
+  color: var(--text-light);
+  font-size: 13px;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 1336├ù768 and below */
+@media (max-width: 1336px) {
+  .hero {
+    padding: clamp(64px, 10vw, 120px) clamp(24px, 5vw, 120px);
+  }
+
+  .accessSection {
+    padding: 0 clamp(24px, 5vw, 120px);
+    gap: 20px;
+  }
+
+  .mapSection {
+    padding: clamp(48px, 8vw, 120px) clamp(24px, 5vw, 120px) clamp(80px, 10vw, 140px);
+  }
+
+  .mapContent {
+    gap: clamp(24px, 4vw, 56px);
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .accessSection {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mapContent {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero {
+    padding: 130px 24px 48px;
+    min-height: auto;
+  }
+
+  .heroCopy h1 {
+    font-size: clamp(40px, 10vw, 56px);
+  }
+
+  .accessSection {
+    grid-template-columns: 1fr;
+    padding: 0 24px;
+    margin: 48px auto;
+  }
+
+  .accessCard {
+    padding: 28px 24px;
+  }
+
+  .accessAction {
+    min-height: 44px;
+    padding: 12px 20px;
+  }
+
+  .mapSection {
+    padding: 48px 24px 80px;
+  }
+
+  .mapContent {
+    gap: 32px;
+  }
+
+  .mapCopy h2 {
+    font-size: clamp(32px, 8vw, 48px);
+  }
+
+  .mapTag {
+    min-height: 44px;
+    padding: 12px 18px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .hero {
+    padding: 130px 18px 40px;
+    border-bottom-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+  }
+
+  .heroCopy h1 {
+    font-size: clamp(36px, 12vw, 48px);
+  }
+
+  .heroLead {
+    font-size: 15px;
+  }
+
+  .highlightCard {
+    padding: 18px;
+  }
+
+  .mediaCard {
+    position: static;
+    margin-top: -40px;
+    min-width: auto;
+    width: 100%;
+  }
+
+  .accessSection {
+    padding: 0 18px;
+    margin: 40px auto;
+  }
+
+  .accessCard {
+    padding: 24px 20px;
+  }
+
+  .mapSection {
+    padding: 40px 18px 64px;
+  }
+
+  .hoursList li {
+    flex-direction: column;
+    gap: 4px;
+  }
+}

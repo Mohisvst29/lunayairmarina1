@@ -1,0 +1,123 @@
+.section {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 28px;
+  padding: clamp(24px, 4vw, 40px);
+  border: 1px solid rgba(12, 79, 173, 0.12);
+  box-shadow: 0 25px 60px rgba(4, 22, 48, 0.05);
+  transition: box-shadow 0.4s ease, transform 0.4s ease, background 0.4s ease;
+}
+
+.section + .section {
+  margin-top: 24px;
+}
+
+.section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 35px 70px rgba(4, 22, 48, 0.08);
+}
+
+.section[data-highlight="true"] {
+  box-shadow: 0 0 0 2px rgba(12, 79, 173, 0.35), 0 30px 80px rgba(4, 22, 48, 0.12);
+  background: rgba(12, 79, 173, 0.05);
+}
+
+.section__header {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.section__meta {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.section__index {
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  color: rgba(4, 22, 48, 0.55);
+  min-width: 40px;
+}
+
+.section__titleBlock {
+  flex: 1;
+}
+
+.section__title {
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  color: #0a1531;
+  margin-bottom: 8px;
+}
+
+.section__summary {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(6, 24, 50, 0.85);
+}
+
+.section__actions {
+  display: flex;
+  gap: 8px;
+}
+
+.copyButton {
+  border: 1px solid rgba(12, 79, 173, 0.25);
+  background: rgba(12, 79, 173, 0.08);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #0c2b52;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.copyButton:hover,
+.copyButton:focus-visible {
+  background: rgba(12, 79, 173, 0.15);
+  transform: translateY(-1px);
+}
+
+.copyToast {
+  margin-top: 12px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(12, 79, 173, 0.12);
+  color: #0a1f3f;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+}
+
+.copyToast[data-visible="true"] {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .section__header {
+    flex-direction: column;
+  }
+
+  .section__actions {
+    width: 100%;
+  }
+
+  .copyButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section,
+  .section * {
+    transition: none !important;
+  }
+}
+

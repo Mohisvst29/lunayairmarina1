@@ -1,0 +1,654 @@
+{
+    "companyName": "Lunier Marina",
+    "nav": {
+        "home": "Home",
+        "services": "Services",
+        "about": "About us",
+        "blog": "Blog",
+        "reviews": "Reviews",
+        "faq": "FAQ",
+        "careers": "Careers",
+        "connect": "Connect us",
+        "close": "Close menu",
+        "services_dropdown": {
+            "interior": "Interior",
+            "exterior": "Exterior",
+            "maintenance": "Maintenance",
+            "project_management": "Project Management",
+            "captain_crew": "Captain & Crew",
+            "concierge": "Concierge",
+            "hurricane_planning": "Hurricane Planning",
+            "all_services": "All Services"
+        }
+    },
+    "hero": {
+        "brand": "Lunier Marina",
+        "title": "Lunier Marina",
+        "subtitle": "Exceptional Marine\u00A0Luxury",
+        "description": "This is where comprehensive yacht management services come into play, ensuring that owners can enjoy their time at sea and leave the complexities of operations and logistics to the professionals.",
+        "cta_connect": "Connect With Us",
+        "cta_know_more": "Learn More",
+        "stats": {
+            "experience": {
+                "value": 18,
+                "label": "Years of marine expertise",
+                "suffix": "+"
+            },
+            "fleet": {
+                "value": 42,
+                "label": "Vessels under tailored care",
+                "suffix": "+"
+            },
+            "partners": {
+                "value": 28,
+                "label": "Trusted global partners",
+                "suffix": "+"
+            }
+        }
+    },
+    "dashboard": {
+        "title": "Performance dashboard",
+        "efficiency": "98% efficiency"
+    },
+    "relationship_section": {
+        "badge": "Upcoming Services",
+        "title": "Our Regional and Local Services",
+        "description": "We provide our services through our branches on the West Coast and the Eastern Region of the Kingdom of Saudi Arabia. We are pleased to offer our services in the Arabian Gulf region."
+    },
+    "video": {
+        "badge": "Featured Video",
+        "title": "We have what you are looking for",
+        "description": "In a world where the pace of life is constantly accelerating, luxury yachts remain a sanctuary of tranquility and distinction. Owning a yacht is no longer just a pleasure; it requires precise management of a complex asset. This is where Lunier Marina comes in, offering you an unparalleled experience that combines absolute luxury with professionalism, ensuring you enjoy every moment on your yacht while leaving all the details to us.",
+        "cta": "Discover More",
+        "secondaryCta": "Talk to Us",
+        "label": "Preview",
+        "unavailable": "Video unavailable right now."
+    },
+    "about": {
+        "title": "Exceptional Marine Luxury",
+        "description": "In a fast-paced world, luxury yachts remain a sanctuary for tranquility and distinction. Owning a yacht is no longer just a pleasure; it has become a complex asset requiring precise management. This is where Lunier Marina comes in, offering you an unparalleled experience that combines absolute luxury with professionalism, ensuring you enjoy every moment aboard your yacht while leaving all the details to us."
+    },
+    "why_choose_us": {
+        "title": "Why Choose Lunier Marina?",
+        "experience_title": "Extensive Experience and Exceptional Professionalism",
+        "experience_desc": "We are a trusted company in the yacht management sector. Our team includes highly competent yacht managers experienced in complex operations. Our distinguished relationships with leading professionals in the sector, from brokers and marine engineers to insurance experts, ensure a seamless experience and optimal results at every stage of your yacht's lifecycle.",
+        "service_title": "Sophisticated and Personalized Customer Service",
+        "service_desc": "Our philosophy is built on establishing long-term relationships with our clients. We believe that a successful partnership requires us to consistently exceed your expectations and meet your requirements at any time. By deeply understanding your needs and preferences, we offer a personalized service that makes you feel like the most important partner in our journey.",
+        "privacy_desc": "We understand the importance of privacy for yacht owners and their guests. We handle all sensitive information related to yacht ownership, itinerary plans, and guests with the utmost confidentiality and professionalism, ensuring the privacy of our esteemed clients and VIPs."
+    },
+    "services": {
+        "title": "Our Services Package",
+        "management_title": "Comprehensive Yacht and Boat Management (360 Degree)",
+        "management_desc": "We offer a complete solution for managing your yacht or boat, covering all operational, technical, and financial aspects. From crew supervision and periodic maintenance to budget management and compliance with maritime laws, we handle everything. You can also choose a modular approach that allows you to select only the services you need.",
+        "agency_title": "Agency Services for Visiting Yachts",
+        "agency_desc": "We welcome visiting yachts to the coasts of Saudi Arabia and facilitate all necessary procedures to ensure smooth arrival and comfortable departure. We take care of entry permits, customs clearance, and providing all required documentation, allowing you to focus on enjoying the beauty of the Red Sea.",
+        "marina_title": "Management and Operation of Marinas and Marine Clubs",
+        "marina_desc": "We manage marinas according to the highest global standards, providing a safe and luxurious environment for docking yachts and boats. We also operate yacht clubs that offer exclusive recreational services and amenities for yacht and boat owners, utilizing modern technology to make them the perfect destination for relaxation and socializing.",
+        "crew_title": "Crew Recruitment Services",
+        "crew_desc": "We understand that the right crew is the foundation of an exceptional experience. Our recruitment team selects candidates with extreme care to ensure they match your unique requirements in terms of skill and personality. You can trust that every member of our crew is qualified, experienced, and ready to provide the highest levels of service.",
+        "cleaning": {
+            "title": "Premium Cleaning and Care Services",
+            "intro": "At Lunier Marina, your luxury destination for comprehensive yacht and boat care, where luxury meets sustainability. We offer an integrated experience combining cleaning and premium care, focusing on meeting your personal needs and ensuring your peace of mind.",
+            "sustainability": {
+                "title": "Our Commitment to Sustainability",
+                "items": [
+                    "Eco-Friendly Products: We carefully select cleaning and polishing products that meet the highest sustainability standards, reducing environmental impact.",
+                    "Advanced Technologies: We use the latest cleaning and maintenance technologies, ensuring efficiency and effectiveness while reducing energy consumption.",
+                    "Environmental Preservation: We adopt practices that reduce waste and emissions, in line with our commitment to preserving our marine environment."
+                ]
+            },
+            "services": {
+                "title": "Premium Cleaning and Care Services",
+                "items": [
+                    "Premium Polishing: We use the latest technologies to ensure unmatched shine and luster, with multiple options for interior and exterior surface care, including luxury furniture and elegant linens.",
+                    "Deep Cleaning: We provide customized care for every part of your yacht or vessel, with special attention to fine details, including care for luxury furniture, linens, and personal accessories.",
+                    "Professional Care: We pay special attention to your personal requirements, providing multiple options of shampoos, luxury soaps, creams, and personal care products.",
+                    "Furniture Arrangement: We ensure elegant coordination of all interior furnishings, with attention to the finest details, including luxury furniture, linens, and lighting.",
+                    "Pool Cleaning: We provide comprehensive care for your pools, ensuring water purity and sterilization, with luxury towels provided."
+                ]
+            },
+            "personal_care": {
+                "title": "Our Personal Care",
+                "items": [
+                    "Luxury Products: We offer a curated selection of premium personal care products, including shampoos, luxury soap made from natural oils, moisturizing creams, and surface care products.",
+                    "Attention to Details: We understand your personal needs, so we offer customized cosmetics options, ensuring all your requirements are met.",
+                    "Your Peace of Mind: We ensure all your personal needs are provided, with the ability to request additional products at any time."
+                ]
+            },
+            "why_us": {
+                "title": "Why Lunier Marina?",
+                "items": [
+                    "Quality and Luxury: We guarantee exceptional cleanliness and shine for your vessels and yachts, maintaining the highest quality standards.",
+                    "Comfort and Flexibility: We offer multiple options and customized services, with the ability to request products and services through our smart app or contact our team available 24/7.",
+                    "Sustainability and Luxury: We combine the use of the latest technologies and eco-friendly products, ensuring a luxurious experience while preserving the environment."
+                ]
+            },
+            "conclusion": "At Lunier Marina, we don't just provide cleaning services, we guarantee your vessels and yachts a shine and luster that reflects the luxury of your vessels and your pride in owning them. Join us and enjoy a luxurious maritime experience, with preserving the marine environment at the heart of our concerns."
+        },
+        "crew": {
+            "title": "Crew Preparation Services",
+            "intro": "At Lunier Marina, we believe our success is the product of a dedicated and qualified team. We invest in our human resources through continuous training, providing a motivating work environment, and ensuring professional development for all employees.",
+            "strategy": {
+                "title": "Our Recruitment Strategy",
+                "items": [
+                    "Maritime Expertise: We seek experts in marine tourism, yacht management, and technical maintenance, prioritizing technical and technological skills.",
+                    "Training and Qualification: We offer advanced training programs to ensure our team possesses the latest skills in the maritime industry, including the latest technologies and repair and maintenance methods.",
+                    "Cultural Diversity: We pride ourselves on a culturally diverse team, ensuring services that meet the needs of our clients from various cultural backgrounds."
+                ]
+            },
+            "environment": {
+                "title": "Work Environment at Lunier Marina",
+                "items": [
+                    "Empowerment and Creativity: We encourage our team to innovate and present new ideas, focusing on developing customized solutions for our clients.",
+                    "Professional Growth: We offer clear career paths and advancement opportunities, ensuring professional development for all employees.",
+                    "Collaboration: We work as one team, with all departments collaborating seamlessly to ensure an exceptional experience for our clients."
+                ]
+            },
+            "cta": "At Lunier Marina, we are committed to continuously developing our team, with a focus on quality, safety, and sustainability. Join us and be part of our dedicated team making a difference in the world of marine tourism.",
+            "teams": {
+                "marine": {
+                    "title": "Our Professional Marine Team",
+                    "items": [
+                        "Captains and Navigators: We pride ourselves on a team of experienced captains and navigators with advanced maritime skills and extensive experience handling various marine conditions. Whether you're looking for recreational trips or specialized maritime operations, our team ensures a safe and smooth experience.",
+                        "Technical Team: We provide a specialized technical team in mechanical and electrical repairs, with experience handling all technical and technological faults. We use the latest technologies and tools to ensure efficiency and effectiveness.",
+                        "Cleaning and Care Team: We provide professional care for your vessels, with a cleaning team specialized in polishing and care, including luxury furniture and personal accessories."
+                    ]
+                },
+                "admin": {
+                    "title": "Our Administrative Team",
+                    "items": [
+                        "General Supervision: Our administrative team is led by elite experts, with precise oversight of all operations, from strategic planning to execution.",
+                        "Marketing and Public Relations: We ensure a strong market presence, with a marketing and public relations team specialized in promoting your brand and organizing luxury events.",
+                        "Logistics Services: We provide a specialized team in managing logistics operations, including booking, provisioning, and facility management."
+                    ]
+                }
+            },
+            "why_us": {
+                "title": "What Sets Lunier Marina Apart",
+                "items": [
+                    "Experience and Professionalism: Our team has deep experience in marine tourism, yacht management, and technical maintenance.",
+                    "Focus on Quality and Safety: We ensure the highest quality and safety standards in all our services, prioritizing client and visitor safety.",
+                    "Cultural Diversity: Our team includes experts from diverse cultural backgrounds, creating a work environment rich in cultures and experiences.",
+                    "Continuous Training: We offer advanced training programs to ensure our team possesses the latest skills in the maritime industry.",
+                    "Collaboration and Flexibility: We work as one team, ensuring a motivating and flexible work environment."
+                ]
+            },
+            "commitment": {
+                "title": "Our Commitment to You",
+                "items": [
+                    "Quality and Excellence: We ensure providing maritime services with the highest quality standards, focusing on the safety and comfort of our clients.",
+                    "Professional Development: We offer opportunities for professional growth, with specialized training programs.",
+                    "Motivating Environment: We ensure providing a positive work environment, with appreciation for our team's efforts and contributions."
+                ]
+            }
+        },
+        "booking": {
+            "title": "Booking and Trip Planning Services",
+            "intro": "At Lunier Marina, we don't just provide booking services, we ensure a luxurious and safe maritime experience, with preserving the marine environment at the heart of our concerns.",
+            "services": {
+                "title": "Booking and Trip Planning Services",
+                "items": [
+                    "We offer flexible booking options to suit all your needs, ensuring a smooth and safe experience. Whether you prefer online booking or through our team, we ensure meeting your expectations.",
+                    "Maritime Trip Permits: We provide full support in obtaining local and international visas and permits, ensuring a smooth maritime experience without complications.",
+                    "Maritime Trip Planning: Our specialized team plans your maritime trips, whether recreational or business, ensuring efficiency and comfort. Whether you're planning a maritime trip around our stunning shores or an international trip, we ensure an unforgettable experience."
+                ]
+            },
+            "why_us": {
+                "title": "Why Clients Choose Us",
+                "features": [
+                    {
+                        "title": "Custom Routes",
+                        "desc": "Routes designed specifically to suit your preferences"
+                    },
+                    {
+                        "title": "Exclusive Access",
+                        "desc": "Booking spots at the finest marinas and destinations"
+                    },
+                    {
+                        "title": "Seamless Logistics",
+                        "desc": "Handling fuel, provisions, and entry documents"
+                    }
+                ]
+            }
+        },
+        "financial": {
+            "title": "Financial Affairs",
+            "intro": "At Lunier Marina, we don't just provide luxury maritime services, we ensure efficient financial operations while preserving maritime assets and enhancing their sustainability. We recognize that professional financial management is the hidden success partner, driving operational processes towards excellence and sustainability.",
+            "solutions": {
+                "title": "Integrated Financial and Administrative Solutions",
+                "desc": "We offer integrated financial and administrative solutions to ensure operational efficiency and cost effectiveness, while preserving maritime assets and enhancing their sustainability. We recognize that professional financial management is the backbone of success in the luxury marine tourism sector, therefore we rely on a team of financial and administrative experts to provide advanced services that meet the needs of our yacht and boat owner clients."
+            },
+            "management": {
+                "title": "Professional Financial Management",
+                "items": [
+                    "We provide distinguished financial management aimed at increasing profit margins while maintaining optimal balance in operational costs.",
+                    "We rely on precise financial analytics to identify areas for improvement, and apply effective strategies to reduce costs without compromising service quality.",
+                    "We ensure effective resource distribution, with continuous monitoring of expenses and revenues to achieve the highest return on investment.",
+                    "We work on developing long-term financial plans that support sustainable growth and contribute to achieving strategic objectives."
+                ]
+            },
+            "process": {
+                "title": "Advanced Financial Management Process",
+                "steps": [
+                    {
+                        "title": "1. Operational Cost Analysis",
+                        "items": [
+                            "We start by conducting a thorough review of all operational costs associated with operating and maintaining yachts and boats, including service bills, fuel costs, and marine crew expenses.",
+                            "We use advanced financial analysis tools to identify spending areas that can be improved or reduced without affecting service quality."
+                        ]
+                    },
+                    {
+                        "title": "2. Setting Priorities",
+                        "items": [
+                            "We identify areas that need immediate action to reduce costs, while ensuring no compromise to service quality or comfort level provided to clients.",
+                            "This may include negotiating with suppliers for preferential prices, or re-evaluating maintenance contracts to ensure better terms."
+                        ]
+                    },
+                    {
+                        "title": "3. Implementing Cost Reduction Strategies",
+                        "items": [
+                            "Strategic Purchasing: We buy consumables and spare parts at competitive prices, while ensuring quality and sustainability.",
+                            "Preventive Maintenance: We rely on comprehensive preventive maintenance programs to reduce sudden breakdowns, minimizing emergency repair costs.",
+                            "Continuous Training: We ensure staff is highly trained, reducing human errors and lowering operational costs."
+                        ]
+                    },
+                    {
+                        "title": "4. Investing in Modern Technologies",
+                        "items": [
+                            "We use the latest digital systems for operations management, reducing waste and increasing human team efficiency.",
+                            "We rely on automation in many routine operations, reducing the need for additional workforce."
+                        ]
+                    },
+                    {
+                        "title": "5. Transparent Financial Reports",
+                        "items": [
+                            "We provide detailed periodic reports on financial performance, with comprehensive analysis of revenues and expenses.",
+                            "We ensure our clients fully understand the financial situation, with customized recommendations to improve financial performance."
+                        ]
+                    },
+                    {
+                        "title": "6. Team Professional Development",
+                        "items": [
+                            "We offer advanced training programs to ensure staff possesses the latest skills in the maritime industry.",
+                            "We encourage our team to innovate and present new ideas, focusing on developing customized solutions for clients."
+                        ]
+                    }
+                ]
+            }
+        },
+        "admin": {
+            "title": "Administrative Affairs",
+            "intro": "Our administrative team is the vital backbone managing operational processes at Lunier Marina, from strategic planning to precise execution. We rely on specialized experts in marine tourism, with deep understanding of yacht and boat owner client requirements.",
+            "leadership": {
+                "title": "Professional Leadership Features",
+                "items": [
+                    "Extensive Experience: Our administrative team has deep experience in the luxury marine tourism sector, with comprehensive understanding of diverse client requirements.",
+                    "Professionalism: We provide professional leadership combining precise planning and effective execution, ensuring the highest levels of quality and safety.",
+                    "Diverse Team: Our team includes experts from multiple fields, ensuring comprehensive coverage of all operational aspects.",
+                    "Client Focus: We place our clients at the heart of our concerns, ensuring a luxurious and safe maritime experience that meets their aspirations and exceeds their expectations."
+                ]
+            },
+            "responsibilities": {
+                "title": "Administrative Team Responsibilities",
+                "sections": [
+                    {
+                        "title": "Strategic Planning",
+                        "items": [
+                            "Developing comprehensive plans for operational processes, including management of marine facilities, client services, and logistics operations.",
+                            "Ensuring alignment with the company's vision and long-term strategy."
+                        ]
+                    },
+                    {
+                        "title": "Operations Oversight",
+                        "items": [
+                            "Precisely following up on operational plan execution, ensuring quality of services provided.",
+                            "Providing continuous support to various departments, focusing on safety and comfort for clients."
+                        ]
+                    },
+                    {
+                        "title": "Inter-Department Coordination",
+                        "items": [
+                            "Ensuring effective coordination between all departments, including financial management, marketing, and maritime operations.",
+                            "Enhancing collaboration between departments to achieve the highest levels of efficiency."
+                        ]
+                    },
+                    {
+                        "title": "Continuous Development",
+                        "items": [
+                            "Motivating the team to innovate and provide the best services.",
+                            "Providing specialized training to ensure the team keeps up with the latest technologies and operational methods."
+                        ]
+                    },
+                    {
+                        "title": "Client Communication",
+                        "items": [
+                            "Understanding client aspirations and meeting their needs through personalized services.",
+                            "Ensuring a luxurious and safe maritime experience, maintaining the highest quality standards."
+                        ]
+                    }
+                ]
+            },
+            "results": {
+                "title": "Tangible Results",
+                "items": [
+                    "Operations Efficiency: Through professional planning and continuous supervision, we ensure smooth and integrated operation, reducing waste and raising productivity levels.",
+                    "Client Satisfaction: Our administrative team ensures a luxurious and safe maritime experience, maintaining the highest quality standards, enhancing client loyalty and increasing satisfaction.",
+                    "Sustainable Growth: We provide customized solutions that meet our clients' needs, ensuring long-term success continuity."
+                ],
+                "conclusion": "At Lunier Marina, we don't just provide luxury maritime services, we ensure professional leadership of operational processes, focusing on quality, safety, and sustainability. We believe the distinguished administrative team is the hidden success partner, driving operational processes towards excellence and leadership."
+            }
+        }
+    },
+    "commitment": {
+        "title": "Our Commitment",
+        "performance_title": "High Standards,\nPractical Delivery",
+        "performance_desc": "We go beyond luxury, blending quality, safety, into every voyage so you enjoy the sea with complete peace of mind, backed by standards & transparent reporting.",
+        "quality_title": "Quality and Safety",
+        "quality_desc": "We enforce rigorous inspection routines, detailed checklists, and rapid-response protocols so your yacht stays in peak condition so each passage remains calm & secure.",
+        "environment_title": "Environmental Responsibility",
+        "environment_desc": "We choose sustainable materials, limit emissions across every route, and train each crew on responsible practices so the sea you enjoy today stays pristine for tomorrow.",
+        "confidentiality_title": "Privacy First, Trust Always",
+        "confidentiality_desc": "Owner, guest, and itinerary details stay protected with strict discretion before, during, and after every journey, so your privacy and trust remain uncompromised."
+    },
+    "team": {
+        "title": "Our Team",
+        "heart_title": "The Heart of Our Service",
+        "heart_desc": "Our greatest strength is teamwork. We work directly with our clients; every yacht manager is supported by a complete team of technical management, accounting, and recruitment to provide robust and responsive service. We constantly share information to ensure every yacht runs smoothly.",
+        "passion_title": "Passion Inspires Excellence",
+        "passion_desc": "Lunier Marina is not just a company; it is a team of passionate and dedicated individuals who put their passion at the core of everything they do. Every member of our team, from managers to engineers and technicians, works as your partner to ensure every aspect of your yacht is managed to perfection. We are here to ensure your yachting experience exceeds all expectations.",
+        "integrated_title": "Integrated Team",
+        "integrated_desc": "Our team consists of experts in yacht management, engineering, and crew recruitment. We work as an extension of your own team to ensure every aspect of your yacht is managed to perfection.",
+        "development_title": "Talent Development",
+        "development_desc": "We are always looking for passionate individuals to join us. We believe that people make the difference, and we provide them with opportunities to develop and grow in a rewarding career in the yachting world.",
+        "crew_selection_title": "Crew Recruitment",
+        "crew_selection_desc": "We carefully select the right crew who not only possess the required skills but also have the personality that matches your preferences, ensuring a distinguished experience aboard your yacht."
+    },
+    "testimonials": {
+        "title": "Don't take it from us, hear it from our users"
+    },
+    "careers": {
+        "title": "Careers",
+        "subtitle": "Join Us or Collaborate With Us",
+        "description": "If you are passionate about the yachting world and strive for excellence, Lunier Marina is your destination. We are always looking for exceptional talent to join our growing team. Join us and participate in shaping the future of marine hospitality in the Kingdom."
+    },
+    "partnerships": {
+        "title": "Partnerships",
+        "subtitle": "Together Towards Excellence",
+        "description": "We welcome partnerships with leading companies in the sector, from marine designers and engineers to global suppliers. We believe that collaboration is the key to success, and we strive to build strong relationships that benefit all parties to provide the best services to our clients."
+    },
+    "faq": {
+        "label": "FAQ",
+        "title": "What's often asked about",
+        "description": "Answers to the questions we hear most often from yacht owners and captains planning their next season.",
+        "cta": "Contact Us",
+        "items": {
+            "1": {
+                "question": "What does full-service yacht management include?",
+                "answer": "We coordinate maintenance schedules, crew management, provisioning, compliance paperwork, and voyage support so you can focus entirely on your guests."
+            },
+            "2": {
+                "question": "Can you assist with insurance and registration?",
+                "answer": "Our compliance desk keeps every registry, flag, and insurance document current and handles renewals ahead of deadlines to avoid delays at port."
+            },
+            "3": {
+                "question": "Do you operate across different regions?",
+                "answer": "Yes, our captains and partner shipyards span the Mediterranean, Gulf, and Indian Ocean corridors to make seasonal repositioning effortless."
+            },
+            "4": {
+                "question": "How do you maintain safety standards on board?",
+                "answer": "We follow ISM and ISPS guidelines, conduct regular drills with your crew, and track every inspection digitally for full transparency."
+            },
+            "5": {
+                "question": "Is support available outside office hours?",
+                "answer": "A dedicated duty manager is reachable 24/7 for routing changes, technical incidents, or concierge requests."
+            }
+        }
+    },
+    "contact": {
+        "title": "CONNECT US",
+        "subtitle": "Send us a message and we'll get back to you within 24 hours.",
+        "first_name": "Name",
+        "last_name": "Last name",
+        "email": "Email",
+        "phone": "Phone number",
+        "company": "Company name",
+        "availability": "Earliest availability",
+        "interest": "What are you most interested in?",
+        "send": "Send message",
+        "note": "WE'LL GET BACK TO YOU WITHIN 24 HOURS.",
+        "placeholders": {
+            "firstName": "Jane",
+            "lastName": "Smith",
+            "email": "jane@example.com",
+            "phone": "(555) 000-0000",
+            "company": "Your company",
+            "interest": "Tell us about the voyage or service you need help with."
+        }
+    },
+    "footer": {
+        "readyTitle": "Ready",
+        "slogan": "More than just management, it's a partnership towards luxury and excellence.",
+        "address": "Al Murjan Tower, Prince Sultan Road, Al Rawdah District, Jeddah, Saudi Arabia.",
+        "phone": "00966531561212",
+        "phone_cta": "Call or WhatsApp",
+        "phone_hint": "Tap to call on mobile · Opens WhatsApp on desktop",
+        "email": "Info@lunayairmarina.com",
+        "email_cta": "Send us an email",
+        "email_hint": "Launches your default email app",
+        "website": "https://seaexpertis.com/",
+        "boatpro_website": "https://boatpro.club/",
+        "company_integrated": "Integrated Marine Services Holding Co. Ltd.",
+        "company_boatpro": "Boat Pro Marine Services",
+        "company_boatpro_desc": "Specialized in operating an application for renting boats, yachts, and marine recreational vehicles",
+        "company_lunier": "Lunier Marina Marine Services",
+        "company_lunier_desc": "Specialized in yacht, marina, and facility management and operation services.",
+        "terms": "Terms & Conditions",
+        "rights": "© {{year}} Lunier Marina. All rights reserved.",
+        "designerBy": "Designed by",
+        "designer": "RWAD Team"
+    },
+    "blog": {
+        "badge": "Our Blog",
+        "title": "Latest News & Insights",
+        "description": "Stay updated with the latest trends, tips, and stories from the world of yachting and marine services.",
+        "searchPlaceholder": "Search articles...",
+        "allCategories": "All Categories",
+        "readMore": "Read More",
+        "loading": "Loading posts...",
+        "noResults": "No posts found matching your search.",
+        "defaultAuthor": "Lunier Marina Team",
+        "backToBlog": "Back to Blog",
+        "notFound": "Post not found",
+        "notFoundDescription": "The blog post you are looking for does not exist.",
+        "tags": "Tags",
+        "relatedPosts": "Related Posts",
+        "minRead": "min read"
+    },
+    "yachtApp": {
+        "headline": "Manage Your Yacht Anytime, Anywhere.",
+        "description": "Experience seamless control over your vessel with our proprietary application. From crew scheduling to real-time expense tracking, everything is at your fingertips.",
+        "features": {
+            "monitoring": "Real-time Monitoring",
+            "support": "24/7 Support",
+            "booking": "Booking Portal"
+        },
+        "download": "DOWNLOAD NOW",
+        "appStore": "Download on the App Store",
+        "googlePlay": "GET IT ON Google Play",
+        "testimonial": "\"The most intuitive yacht management app I've ever used. It has completely streamlined our operations.\"",
+        "testimonialAuthor": "- Captain Mark, M/Y Serenity",
+        "phone": {
+            "vesselName": "M/Y Serenity",
+            "active": "Active",
+            "vesselStatus": "Vessel Status",
+            "allSystemsOperational": "All Systems Operational",
+            "crewSchedule": "Crew Schedule",
+            "crewStatus": "3 Active • 2 On Leave",
+            "nextMaintenance": "Next Maintenance",
+            "maintenanceDate": "Engine Service - Dec 15",
+            "monthlyExpenses": "Monthly Expenses",
+            "expensesAmount": "$24,500 / $30,000"
+        }
+    },
+    "appPage": {
+        "overlay": {
+            "comingSoon": "Coming Soon",
+            "title": "Our App Is\nUnder Development",
+            "titleSuffix": "Under Development",
+            "titlePrefix": "Our App Is",
+            "subtitle": "We're crafting the ultimate yacht management experience. Be the first to know when we launch.",
+            "features": {
+                "monitoring": "Real-time Monitoring",
+                "checklists": "Digital Checklists",
+                "tracking": "Service Tracking"
+            },
+            "cta": "Get Notified"
+        },
+        "hero": {
+            "label": "Premium Yacht Management",
+            "title": "Yacht app: The ultimate yacht monitoring",
+            "titleSuffix": "experience.",
+            "description": "Imagine being able to monitor your yacht or boat from anywhere in the world right from your fingertips. Our proprietary management app is now the ultimate tool for yacht owners not only in our direct fleet of managed vessels but across the country to stay updated on maintenance, upkeep, service, photos, and vessel information!",
+            "askQuestion": "Ask a Question",
+            "downloadAppStore": "Download on the",
+            "appStore": "App Store",
+            "getFromGoogle": "GET IT ON",
+            "googlePlay": "Google Play"
+        },
+        "benefits": {
+            "title": "Main App benefits"
+        },
+        "features": {
+            "tankLevels": {
+                "title": "View your Tank levels",
+                "description": "Have the ability to view your current tank levels from anywhere! Our team and captains update these levels after each visit and outing! You will receive a notification that this was updated!"
+            },
+            "checklist": {
+                "title": "Stay updated with our custom checklist",
+                "description": "A Lumière Marina team member will visit the boat and build out a completely custom checklist. This includes, exterior detailing, interior detailing, sea strainers, full systems check, hours and much more! This is updated each week by our team or your crew!"
+            },
+            "services": {
+                "title": "Upcoming service monitoring",
+                "description": "This section of our management app allows you to view when services are due. The colors change automatically according to due dates for annual service for your yacht. You will also receive a notification 2 months prior so arrangements can be made by our service team and when the service is due!"
+            }
+        },
+        "mockup": {
+            "common": {
+                "boatName": "Golden Eye",
+                "lastUpdatedToday": "Last updated: Today",
+                "lastUpdatedYesterday": "Last updated: Yesterday"
+            },
+            "checklist": {
+                "title": "Checklist",
+                "history": "History",
+                "exterior": "Exterior",
+                "washdown": "Full washdown",
+                "windshield": "Windshield polished",
+                "decks": "Decks cleaned",
+                "cupholders": "Cupholders cleaned and dried",
+                "interior": "Interior",
+                "sinks": "Sinks polished",
+                "floors": "Cleaned floors",
+                "fingerprints": "Fingerprints removed",
+                "bellowDeck": "Bellow deck",
+                "strainer": "Gen strainer cleaned"
+            },
+            "tanks": {
+                "title": "Tank levels",
+                "diesel": "Diesel",
+                "water": "Water",
+                "waste": "Waste",
+                "gas": "Gas"
+            },
+            "dashboard": {
+                "tankLevels": "Tank levels",
+                "checklist": "Checklist",
+                "safety": "Safety",
+                "systems": "Systems",
+                "docs": "Docs",
+                "crew": "Crew",
+                "service": "Service",
+                "history": "History",
+                "info": "Info",
+                "view": "View",
+                "details": "Details",
+                "dueSoon": "Due Soon",
+                "valid": "Valid",
+                "good": "Good",
+                "active": "Active",
+                "onBoard": "On Board",
+                "done": "Done"
+            },
+            "services": {
+                "title": "Upcoming services",
+                "serviceType": "Service type",
+                "bottomPaint": "Bottom Paint",
+                "engineService": "Engine Service",
+                "driveService": "Drive Service",
+                "generatorService": "Generator Service",
+                "seakeeperService": "Seakeeper service",
+                "acService": "AC Service",
+                "noDueDate": "No Due Date"
+            }
+        },
+        "faq": {
+            "title": "Frequently Asked Questions",
+            "items": {
+                "q1": {
+                    "question": "How does this information get to the app?",
+                    "answer": "This is a great question. When a Lumière Marina team member visits the boat, we update tank levels, submit the checklist and upload photos for the owner. This happens instantly once we hit submit! The rest of the information is input by our yacht managers as well as our administrative team as needed."
+                },
+                "q2": {
+                    "question": "Can I request crew for my boat?",
+                    "answer": "Yes! You absolutely can. In the 'crew/ make ready' section of the app you can request a captain, stewardess or deckhand. You can add a date and time and provide trip details in the notes section. We will then accept the request when crew is placed. You also have the ability to select 'make ready' for the owner operators who want to show up to a fully ready boat!"
+                },
+                "q3": {
+                    "question": "What other information does the app hold?",
+                    "answer": "This app is truly limitless when it comes to information. We upload vessel documents (hurricane plans, insurance COI's, registrations etc) all with expiration dates and notifications. We also store useful information like vessel specs, system information, USCG safety items and locations!"
+                }
+            }
+        },
+        "contact": {
+            "title": "Get in Touch",
+            "subtitle": "Have a question or want to work together? We'd love to hear from you.",
+            "errors": {
+                "fullNameRequired": "Full Name is required",
+                "emailRequired": "Email is required",
+                "emailInvalid": "Please enter a valid email address",
+                "phoneInvalid": "Please enter a valid phone number",
+                "subjectRequired": "Subject is required",
+                "messageRequired": "Message is required",
+                "messageShort": "Message must be at least 10 characters"
+            },
+            "heading": "How can we help?",
+            "labels": {
+                "fullName": "Full Name",
+                "email": "Email Address",
+                "phone": "Phone (Optional)",
+                "howDidYouHear": "How did you hear about us?",
+                "message": "Message"
+            },
+            "options": {
+                "socialMedia": "Social Media",
+                "searchEngine": "Search Engine",
+                "referral": "Referral",
+                "other": "Other"
+            },
+            "placeholders": {
+                "name": "Your Full Name",
+                "email": "email@example.com",
+                "phone": "+1 (555) 000-0000",
+                "message": "Tell us about your needs..."
+            },
+            "privacyPolicy": "I agree to the Privacy Policy and consent to being contacted regarding my inquiry.",
+            "button": {
+                "send": "Send Message",
+                "sending": "Sending..."
+            },
+            "success": {
+                "title": "Message Sent via Carrier Pigeon!",
+                "message": "We'll get back to you as soon as possible."
+            }
+        }
+    }
+}

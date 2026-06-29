@@ -1,0 +1,918 @@
+.page {
+  background: radial-gradient(circle at top, rgba(12, 79, 173, 0.12), transparent 55%),
+    #010413;
+  color: #f4f7ff;
+  min-height: 100vh;
+  padding-top: 180px;
+}
+
+.section {
+  padding: clamp(64px, 8vw, 120px) clamp(24px, 7vw, 120px);
+}
+
+.heroSection {
+  position: relative;
+  overflow: hidden;
+  border-radius: 40px;
+  background: linear-gradient(135deg, rgba(2, 8, 24, 0.95), rgba(8, 30, 78, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+
+.heroBackdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(12, 79, 173, 0.35), transparent 55%),
+    radial-gradient(circle at 85% 10%, rgba(255, 255, 255, 0.08), transparent 45%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroPattern {
+  position: absolute;
+  inset: -18%;
+  background:
+    conic-gradient(from 120deg at 50% 50%,
+      rgba(255, 255, 255, 0.08),
+      rgba(12, 79, 173, 0.12),
+      rgba(255, 255, 255, 0.08),
+      rgba(12, 79, 173, 0.05),
+      rgba(255, 255, 255, 0.08)),
+    radial-gradient(40% 40% at 72% 24%, rgba(0, 255, 214, 0.08), transparent 60%),
+    radial-gradient(32% 32% at 32% 70%, rgba(148, 114, 255, 0.12), transparent 70%);
+  mix-blend-mode: screen;
+  opacity: 0.65;
+  filter: saturate(1.05);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroGrid {
+  position: absolute;
+  inset: -8%;
+  background-image:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 140px 140px;
+  opacity: 0.18;
+  mask-image: radial-gradient(circle at 50% 50%, #000 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 0%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroBeams {
+  position: absolute;
+  inset: -12%;
+  background-image:
+    linear-gradient(115deg, rgba(12, 79, 173, 0.35) 0%, rgba(12, 79, 173, 0) 35%),
+    linear-gradient(245deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 28%);
+  mix-blend-mode: screen;
+  opacity: 0.55;
+  filter: blur(2px);
+  animation: beamShift 16s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroOrbs {
+  position: absolute;
+  inset: -8%;
+  background:
+    radial-gradient(24% 28% at 18% 32%, rgba(0, 255, 214, 0.15), transparent 70%),
+    radial-gradient(22% 26% at 82% 68%, rgba(255, 186, 120, 0.18), transparent 75%),
+    radial-gradient(30% 30% at 56% 18%, rgba(148, 114, 255, 0.22), transparent 70%);
+  mix-blend-mode: screen;
+  opacity: 0.6;
+  animation: orbFloat 12s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroNoise {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg,
+      rgba(255, 255, 255, 0.02) 0,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 2px),
+    repeating-linear-gradient(90deg,
+      rgba(255, 255, 255, 0.02) 0,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 2px);
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes beamShift {
+  0% {
+    transform: translateX(-2%) translateY(0) rotate(0.5deg);
+  }
+
+  50% {
+    transform: translateX(3%) translateY(-2%) rotate(-0.5deg);
+  }
+
+  100% {
+    transform: translateX(1%) translateY(-4%) rotate(0.25deg);
+  }
+}
+
+@keyframes orbFloat {
+  0% {
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+
+  100% {
+    transform: translateY(-14px);
+    filter: blur(1px);
+  }
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.backRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.2s ease;
+}
+
+.backLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+.backLink:hover::after {
+  transform: scaleX(1);
+}
+
+.heroBadge {
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.heroTextGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.heroEyebrow {
+  font-family: "Great Vibes", "Playfair Display", serif;
+  font-size: clamp(1.3rem, 2.2vw, 2rem);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.heroTitle {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.8rem, 4.5vw, 4rem);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.heroLead,
+.heroDescription {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.heroDescription {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.heroMetaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+.priceCard {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 16px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 220px;
+}
+
+.priceCard span {
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.priceCard strong {
+  font-size: 1.4rem;
+}
+
+.heroStats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.statCard {
+  min-width: 140px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 16px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.statCard strong {
+  font-size: 1.4rem;
+  font-family: "Playfair Display", serif;
+}
+
+.statCard span {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.primaryButton,
+.secondaryButton {
+  border-radius: 999px;
+  padding: 14px 32px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.primaryButton {
+  background: linear-gradient(120deg, #0c4fad, #0e8be7);
+  color: white;
+  box-shadow: 0 15px 35px rgba(12, 79, 173, 0.45);
+}
+
+.secondaryButton {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.primaryButton:hover,
+.secondaryButton:hover {
+  transform: translateY(-2px);
+}
+
+.heroMedia {
+  position: relative;
+  z-index: 1;
+}
+
+.heroMediaGlow {
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(circle, rgba(12, 79, 173, 0.25), transparent 60%);
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.heroImageFrame {
+  position: relative;
+  width: 100%;
+  min-height: 420px;
+  border-radius: 32px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.heroImageFrame :global(img) {
+  object-fit: cover;
+}
+
+.heroImageFallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.6);
+  background: repeating-linear-gradient(45deg,
+      rgba(255, 255, 255, 0.04),
+      rgba(255, 255, 255, 0.04) 10px,
+      transparent 10px,
+      transparent 20px);
+}
+
+.sectionHeader,
+.sectionHeaderLeft {
+  max-width: 840px;
+  margin-bottom: 40px;
+}
+
+.sectionHeaderLeft {
+  align-self: flex-start;
+}
+
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  letter-spacing: 0.4em;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.sectionTitle {
+  font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+  margin: 12px 0;
+  font-family: "Playfair Display", serif;
+}
+
+.sectionSubtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.imageSection {
+  padding-top: clamp(48px, 6vw, 80px);
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.imageFrame {
+  position: relative;
+  width: 100%;
+  padding-bottom: 65%;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.imageFrame :global(img) {
+  object-fit: cover;
+}
+
+.imagePlaceholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.primaryImage figcaption,
+.secondaryImage figcaption {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.secondaryGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.secondaryImage .imageFrame {
+  padding-bottom: 55%;
+}
+
+.descriptionSection {
+  padding-top: clamp(48px, 6vw, 80px);
+}
+
+.descriptionContent {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  align-items: start;
+}
+
+.bodyText {
+  line-height: 1.8;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  /* بيضمن إن النص ميفجرش الـ Container لو فيه كلمات طويلة أو مسافات غريبة */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: justify; /* بيدي شكل احترافي للنصوص الطويلة */
+  text-justify: inter-word;
+}
+
+/* Rich Text Styles for Quill Content */
+.bodyText :global(p) {
+  margin-bottom: 1.2rem;
+  /* بيعالج مشكلة الـ &nbsp; لو زادت عن حدها */
+  white-space: normal; 
+}
+
+.bodyText :global(ul), .bodyText :global(ol) {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+[dir="rtl"] .bodyText :global(ul), [dir="rtl"] .bodyText :global(ol) {
+  padding-left: 0;
+  padding-right: 1.5rem;
+}
+
+.bodyText :global(li) {
+  margin-bottom: 0.5rem;
+}
+
+.bodyText :global(h1), .bodyText :global(h2), .bodyText :global(h3) {
+  color: #0e8be7;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.bodyText :global(p) {
+  margin-bottom: 1rem;
+}
+
+.bodyText :global(a) {
+  color: #0e8be7;
+  text-decoration: underline;
+}
+
+
+.bodyText :global(video) {
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+}.bodyText :global(img) {
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  margin: 20px 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.featurePanel {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.featurePanelHeader h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.featurePanelHeader p {
+  margin: 8px 0 0;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.featuresList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+}
+
+.featuresList li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: rgba(12, 79, 173, 0.08);
+  border-radius: 16px;
+  border: 1px solid rgba(12, 79, 173, 0.15);
+}
+
+.featureBullet {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0c4fad, #0e8be7);
+  flex-shrink: 0;
+}
+
+.benefitsSection {
+  padding-top: clamp(48px, 6vw, 80px);
+}
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.benefitCard {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 220px;
+  transition: transform 0.2s ease, border 0.2s ease;
+}
+
+.benefitCard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(12, 79, 173, 0.4);
+}
+
+.benefitIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(12, 79, 173, 0.15);
+}
+
+.benefitIcon :global(img) {
+  object-fit: contain;
+}
+
+.defaultIcon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0c4fad, #0e8be7);
+  display: inline-block;
+}
+
+.benefitCard h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.benefitCard p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+
+.relatedSection {
+  padding-bottom: clamp(80px, 8vw, 120px);
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.relatedCard {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 420px;
+}
+
+.relatedImageLink {
+  display: block;
+}
+
+.relatedImageFrame {
+  position: relative;
+  width: 100%;
+  padding-bottom: 60%;
+  overflow: hidden;
+}
+
+.relatedImageFrame :global(img) {
+  object-fit: cover;
+}
+
+.relatedImagePlaceholder {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 79, 173, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.3em;
+}
+
+.relatedContent {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.relatedContent h3 {
+  margin: 0;
+}
+
+.relatedContent p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+
+.relatedFooter {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.relatedPrice {
+  font-weight: 600;
+  color: #0e8be7;
+}
+
+.detailLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  color: #f4f7ff;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.detailLink::after {
+  content: "➝";
+  transition: transform 0.2s ease;
+}
+
+.detailLink::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.detailLink:hover {
+  color: #0e8be7;
+  transform: translateX(3px);
+}
+
+.detailLink:hover::after {
+  transform: translateX(4px);
+}
+
+.detailLink:hover::before {
+  transform: scaleX(1);
+}
+
+.statusBanner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  margin: 0 clamp(24px, 7vw, 120px);
+  border-radius: 16px;
+  background: rgba(12, 79, 173, 0.15);
+  border: 1px solid rgba(12, 79, 173, 0.25);
+  font-size: 0.95rem;
+  gap: 12px;
+}
+
+.statusBanner button {
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.statusBanner button:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.statusBannerError {
+  background: rgba(255, 102, 102, 0.1);
+  border-color: rgba(255, 102, 102, 0.35);
+  color: #ffb1b1;
+}
+
+.inlineLoader {
+  padding: 80px 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 1024px) {
+  .heroSection {
+    grid-template-columns: 1fr;
+  }
+
+  .imageGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .secondaryGrid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 48px 20px;
+  }
+
+  .heroActions {
+    flex-direction: column;
+  }
+
+  .heroMetaRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .statusBanner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .heroSection {
+    border-radius: 24px;
+  }
+
+  .heroImageFrame {
+    min-height: 320px;
+  }
+
+  .benefitCard {
+    min-height: auto;
+  }
+
+}
+
+/* تحسينات الـ Page والـ Section */
+.page {
+  background: radial-gradient(circle at top, rgba(12, 79, 173, 0.15), transparent 60%), #010413;
+  color: #f4f7ff;
+  min-height: 100vh;
+  padding-top: 120px; /* تقليلها شوية عشان الـ Hero يبان أسرع */
+}
+
+/* تطوير الـ Hero Section ليصبح Dynamic */
+.heroSection {
+  position: relative;
+  overflow: hidden;
+  border-radius: 40px;
+  background: linear-gradient(135deg, rgba(2, 8, 24, 0.98), rgba(8, 30, 78, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: grid;
+  grid-template-columns: 1fr; /* Default للموبايل */
+  gap: 40px;
+  align-items: center;
+  padding: 60px 40px;
+}
+
+@media (min-width: 1024px) {
+  .heroSection {
+    grid-template-columns: 1.2fr 0.8fr; /* النص واخد مساحة أكبر للفخامة */
+    min-height: 650px;
+  }
+}
+
+.heroTitle {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.1;
+  margin: 0;
+  background: linear-gradient(to bottom, #ffffff, #b0c4de);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* تحسين الـ Cards بتأثير الزجاج */
+.benefitCard {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: 30px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.benefitCard:hover {
+  transform: translateY(-10px);
+  background: rgba(12, 79, 173, 0.12);
+  border-color: rgba(12, 79, 173, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* تنسيق محتوى الـ HTML الجاي من Quill (Rich Text) */
+.bodyText {
+  line-height: 1.9;
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.bodyText :global(strong) {
+  color: #0e8be7;
+  font-weight: 600;
+}
+
+.bodyText :global(p) {
+  margin-bottom: 1.5rem;
+}
+
+/* تحسين الـ Hero Image Frame */
+.heroImageFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.1; /* نسبة ذهبية للصور الرأسية */
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}

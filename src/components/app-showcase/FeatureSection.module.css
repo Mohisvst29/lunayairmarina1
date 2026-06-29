@@ -1,0 +1,659 @@
+/* غير الـ .section يبقى inner container بس */
+.section {
+    padding: 6rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+}
+
+/* Wrapper واخد العرض كامل */
+.lightBgWrapper {
+    width: 100%;
+    background: linear-gradient(180deg, rgba(10, 22, 40, 0.4) 0%, rgba(15, 30, 55, 0.2) 100%);
+}
+
+.darkBgWrapper {
+    width: 100%;
+    background-color: #0a1628;
+}
+
+/* شيل الـ background من .lightBg و .darkBg */
+.lightBg {
+    /* امسح كل حاجة هنا */
+}
+
+.darkBg {
+    /* امسح كل حاجة هنا */
+}
+@media (min-width: 1024px) {
+    .section {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8rem 2rem;
+    }
+
+    .section.reversed {
+        flex-direction: row-reverse;
+    }
+}
+
+/* --- LIGHT BACKGROUND VARIANT --- */
+/* .lightBg {
+    background-color: rgba(15, 23, 42, 0.3);
+    background: linear-gradient(180deg, rgba(10, 22, 40, 0.4) 0%, rgba(15, 30, 55, 0.2) 100%);
+} */
+
+.lightBg .title {
+    color: #fff;
+}
+
+.lightBg .description {
+    color: #94A3B8;
+}
+
+.lightBg .waveDivider {
+    color: #BF953F;
+}
+
+/* --- DARK BACKGROUND VARIANT --- */
+/* .darkBg {
+    background-color: #0a1628;
+} */
+
+/* Phone Mockup Wrapper */
+.mockupWrapper {
+    flex: 1;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+}
+
+/* Phone Frame */
+.phoneMockup {
+    width: 300px;
+    height: 600px;
+    background: #000000;
+    border-radius: 44px;
+    border: 8px solid #333333;
+    position: relative;
+    box-shadow:
+        0 0 0 2px #1a1a1a,
+        0 30px 60px rgba(0, 0, 0, 0.6),
+        0 0 100px rgba(191, 149, 63, 0.15);
+    overflow: hidden;
+    z-index: 2;
+}
+
+.phoneMockup::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 20px;
+    background: #1a1a1a;
+    border-radius: 0 0 12px 12px;
+    z-index: 10;
+}
+
+.phoneScreen {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+    padding: 2.5rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Phone Header */
+.phoneHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.backArrow {
+    color: #fff;
+    font-size: 1rem;
+}
+
+.boatName {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Screen Title */
+.screenTitle {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.screenSubtitle {
+    font-size: 0.6rem;
+    color: #64748b;
+    margin-bottom: 1rem;
+}
+
+
+/* Icon Colors */
+.iconBlue {
+    color: #60a5fa;
+}
+
+.iconGreen {
+    color: #4ade80;
+}
+
+.iconOrange {
+    color: #fb923c;
+}
+
+.iconPurple {
+    color: #c084fc;
+}
+
+.iconRed {
+    color: #f87171;
+}
+
+.iconYellow {
+    color: #facc15;
+}
+
+/* Tank Levels UI */
+.tankLevels {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tankItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.tankLabel {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #e2e8f0;
+}
+
+.tankBar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.tankFill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.tankFillDiesel {
+    background: linear-gradient(90deg, #f59e0b 0%, #f97316 100%);
+    width: 65%;
+}
+
+.tankFillWater {
+    background: linear-gradient(90deg, #0ea5e9 0%, #0284c7 100%);
+    width: 80%;
+}
+
+.tankFillWaste {
+    background: linear-gradient(90deg, #64748b 0%, #475569 100%);
+    width: 30%;
+}
+
+.tankFillGas {
+    background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+    width: 45%;
+}
+
+.tankScale {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.5rem;
+    color: #94a3b8;
+    margin-top: 0.15rem;
+}
+
+/* Checklist UI */
+.checklistContent {
+    flex: 1;
+    overflow: hidden;
+}
+
+.checklistHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.historyBtn {
+    font-size: 0.55rem;
+    color: #0c4fad;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.checklistSection {
+    margin-bottom: 0.75rem;
+}
+
+.sectionTitle {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.checklistItems {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.checklistItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.65rem;
+    color: #cbd5e1;
+}
+
+.itemCheck {
+    color: #22c55e;
+    font-weight: bold;
+}
+
+/* Services UI */
+.servicesContent {
+    flex: 1;
+    overflow: hidden;
+}
+
+.servicesTitle {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.servicesList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.serviceItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.serviceInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.serviceType {
+    font-size: 0.5rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+.serviceName {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.serviceDue {
+    font-size: 0.55rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.dueRed {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.dueOrange {
+    background: #ffedd5;
+    color: #ea580c;
+}
+
+.dueGreen {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.dueGray {
+    background: rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+}
+
+/* Phone Bottom Nav */
+.phoneNav {
+    padding: 16px 24px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 22, 40, 0.95);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: auto;
+}
+
+.navItem {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    color: #64748b;
+    transition: all 0.3s ease;
+}
+
+.navItem.active {
+    color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+/* Content Side */
+.content {
+    flex: 1;
+    padding: 2rem;
+    position: relative;
+}
+
+.waveDivider {
+    color: #0c4fad;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    line-height: 1.2;
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #94A3B8;
+    max-width: 500px;
+}
+
+/* Old styles compatibility */
+.imageWrapper,
+.imageContainer {
+    display: none;
+}
+
+.bgNumber {
+    display: none;
+}
+
+/* Desktop Floating Cards */
+.floatingCard {
+    position: absolute;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    z-index: 3;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50%) scale(0.95);
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    padding: 1rem;
+    width: 180px;
+}
+
+.mockupWrapper:hover .floatingCard,
+.mockupWrapper:focus-within .floatingCard,
+.mockupWrapper.interacting .floatingCard {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) scale(1);
+    pointer-events: auto;
+    animation: float 4s ease-in-out infinite;
+}
+
+.floatingCardLeft {
+    left: -20px;
+    top: 30%;
+}
+
+.floatingCardRight {
+    right: -20px;
+    top: 50%;
+}
+
+.mockupWrapper:hover .floatingCardLeft,
+.mockupWrapper:focus-within .floatingCardLeft,
+.mockupWrapper.interacting .floatingCardLeft {
+    animation-delay: 1s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(-50%);
+    }
+    50% {
+        transform: translateY(calc(-50% - 10px));
+    }
+}
+
+/* Card Content Styles */
+.cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 0.75rem;
+}
+
+.cardBoatName {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #0a1628;
+}
+
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.cardLabel {
+    font-size: 0.65rem;
+    color: #64748b;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.cardValue {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0a1628;
+}
+
+.checklistTitle {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #0a1628;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.checklistSection {
+    margin-bottom: 0.5rem;
+}
+
+.checklistSectionTitle {
+    font-size: 0.55rem;
+    color: #64748b;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+}
+
+.checklistItems {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.checklistItem {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.55rem;
+    color: #334155;
+}
+
+.checkmark {
+    color: #22c55e;
+}
+
+.serviceCard {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    background: #f8f9fc;
+    border-radius: 8px;
+}
+
+.serviceCardLabel {
+    font-size: 0.5rem;
+    color: #64748b;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.serviceCardName {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #0a1628;
+}
+
+.serviceCardDue {
+    font-size: 0.6rem;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    width: fit-content;
+}
+
+.dueRed {
+    background: #ffe2e2;
+    color: #d62f2f;
+}
+
+.dueOrange {
+    background: #fff4cc;
+    color: #997404;
+}
+
+.iconBlue {
+    color: #60a5fa;
+}
+
+.iconGreen {
+    color: #4ade80;
+}
+
+.iconRed {
+    color: #f87171;
+}
+
+/* Hide on mobile - use MobileFloatingCard instead */
+@media (max-width: 1023px) {
+    .floatingCard {
+        display: none !important;
+    }
+}
+
+.featureList {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 1023px) {
+    .content {
+        text-align: center;
+    }
+
+    .description {
+        margin: 0 auto;
+    }
+
+    .mockupWrapper {
+        min-height: 400px;
+    }
+
+    .phoneMockup {
+        width: 240px;
+        height: 480px;
+    }
+}
+
+@media (max-width: 640px) {
+    .section {
+        padding: 4rem 1rem;
+    }
+
+    .mockupWrapper {
+        min-height: 350px;
+    }
+
+    .phoneMockup {
+        width: 220px;
+        height: 440px;
+    }
+}

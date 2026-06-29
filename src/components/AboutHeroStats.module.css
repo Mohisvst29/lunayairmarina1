@@ -1,0 +1,47 @@
+.statsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-top: 2rem;
+  direction: ltr;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2.5rem;
+  gap: 0.25rem;
+}
+
+.statValue {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+  direction: ltr;
+}
+
+.statLabel {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.divider {
+  width: 1px;
+  height: 3rem;
+  background: rgba(255, 255, 255, 0.25);
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .statItem {
+    padding: 0 1.25rem;
+  }
+
+  .statValue {
+    font-size: 1.75rem;
+  }
+}

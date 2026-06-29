@@ -1,0 +1,124 @@
+.hero {
+  position: relative;
+  padding: clamp(96px, 20vh, 160px) clamp(24px, 8vw, 120px) clamp(64px, 10vh, 120px);
+  background: radial-gradient(circle at 20% 20%, rgba(12, 79, 173, 0.25), transparent 55%),
+    linear-gradient(135deg, #020b1e 0%, #041630 60%, #092a58 100%);
+  color: var(--text-light);
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(2, 11, 30, 0) 0%, rgba(2, 11, 30, 0.6) 100%);
+  pointer-events: none;
+}
+
+.hero__content {
+  position: relative;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 1;
+}
+
+.hero__eyebrow {
+  font-family: "Great Vibes", "Playfair Display", serif;
+  font-size: clamp(28px, 3vw, 38px);
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.hero__title {
+  font-family: "Playfair Display", "Poppins", serif;
+  font-size: clamp(48px, 8vw, 86px);
+  line-height: 1.1;
+  margin: 0;
+  color: #fefefe;
+}
+
+.hero__subtitle {
+  font-size: clamp(1rem, 1.2vw, 1.3rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.hero__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.hero__badge {
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(12, 79, 173, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.hero__date {
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 120px;
+  }
+
+  .hero__content {
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero,
+  .hero * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,445 @@
+.page {
+    min-height: 100vh;
+    padding-top: 180px;
+    background: radial-gradient(circle at top, rgba(12, 79, 173, 0.12), transparent 55%),
+        #010413;
+}
+
+.section {
+    padding: clamp(64px, 8vw, 120px) clamp(24px, 7vw, 120px);
+}
+
+.heroSection {
+    position: relative;
+    overflow: hidden;
+    border-radius: 40px;
+    background: linear-gradient(135deg, rgba(2, 8, 24, 0.95), rgba(8, 30, 78, 0.92));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: clamp(32px, 5vw, 64px);
+    align-items: center;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.heroMedia {
+    position: relative;
+    z-index: 1;
+}
+
+/* Skeleton Elements */
+.shimmer {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.08) 25%, rgba(255, 255, 255, 0.18) 37%, rgba(255, 255, 255, 0.08) 63%);
+    background-size: 400% 100%;
+    animation: shimmer 1.6s linear infinite;
+    border-radius: 12px;
+}
+
+.badgeSkeleton {
+    width: 140px;
+    height: 32px;
+    border-radius: 999px;
+    margin-bottom: 4px;
+}
+
+.titleSkeleton {
+    width: 80%;
+    height: 48px;
+    margin-bottom: 8px;
+}
+
+.descSkeleton {
+    width: 100%;
+    height: 80px;
+    border-radius: 20px;
+}
+
+.metaSkeleton {
+    width: 60%;
+    height: 20px;
+}
+
+.imageSkeleton {
+    width: 100%;
+    height: 420px;
+    border-radius: 32px;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 100% 0;
+    }
+
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+@media (max-width: 1024px) {
+    .heroSection {
+        grid-template-columns: 1fr;
+    }
+}
+
+.detailPage {
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 70vh;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.heroImage {
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.hero:hover .heroImage {
+  transform: scale(1.05);
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 31, 63, 0.85) 0%, rgba(0, 0, 0, 0.2) 100%);
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 80px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.mainTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-top: 15px;
+  line-height: 1.1;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.separator {
+  opacity: 0.5;
+}
+
+/* Layout Grid */
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 60px;
+  padding: 80px 0;
+}
+
+.sectionHeading {
+  font-size: 1.8rem;
+  color: #001f3f;
+  margin-bottom: 25px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.sectionHeading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: #0c4fad;
+}
+
+[style*="direction: rtl"] .sectionHeading::after {
+  left: auto;
+  right: 0;
+}
+
+.richText {
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: #444;
+}
+
+/* Sidebar Action Card */
+.actionCard {
+  background: #fdfdfd;
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid #eee;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 120px;
+  text-align: center;
+}
+
+.iconCircle {
+  width: 60px;
+  height: 60px;
+  background: #0c4fad;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin: 0 auto 20px;
+}
+
+.actionCard h3 {
+  font-size: 1.5rem;
+  color: #001f3f;
+  margin-bottom: 15px;
+}
+
+.actionCard p {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.contactBtn {
+  width: 100%;
+  background: #001f3f;
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contactBtn:hover {
+  background: #0c4fad;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(12, 79, 173, 0.2);
+}
+
+.cardFooter {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.cardFooter::before {
+  content: '●';
+  color: #28a745;
+  font-size: 10px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .hero {
+    height: 50vh;
+  }
+  
+  .sidebar {
+    order: 2;
+  }
+
+  .actionCard {
+    position: static;
+  }
+}.wrapper {
+  background: #fcfcfc;
+  color: #1a1a1a;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 65vh;
+  min-height: 450px;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 60px;
+}
+
+.imageContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.mainImage {
+  object-fit: cover;
+  filter: brightness(0.85);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 20, 40, 0.9), transparent);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.badge {
+  display: inline-block;
+  background: #0c4fad; /* لون البراند بتاعك */
+  color: white;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.title {
+  color: white;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+/* Layout Grid */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 50px;
+  margin-top: -40px; /* سحب المحتوى للأعلى قليلاً ليتداخل مع الـ Hero */
+  position: relative;
+  z-index: 10;
+}
+
+.article {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* تنسيق الـ HTML اللي جاي من الداتابيز */
+.richText {
+  line-height: 1.8;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.richText img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+/* Sidebar Card */
+.bookingCard {
+  background: #001f3f;
+  color: white;
+  padding: 30px;
+  border-radius: 16px;
+  position: sticky;
+  top: 100px;
+  text-align: center;
+}
+
+.bookingCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.bookingCard p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: 25px;
+}
+
+.ctaBtn {
+  width: 100%;
+  background: #fff;
+  color: #001f3f;
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.ctaBtn:hover {
+  background: #0c4fad;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.features {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.85rem;
+  text-align: left;
+}
+
+[style*="direction: rtl"] .features {
+  text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .grid {
+    grid-template-columns: 1fr;
+    margin-top: 20px;
+  }
+  .hero {
+    height: 40vh;
+  }
+  .sidebar {
+    order: -1; /* خلي زر الحجز يظهر الأول في الموبايل */
+  }
+}

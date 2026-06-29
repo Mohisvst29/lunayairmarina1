@@ -1,0 +1,43 @@
+{
+  "name": "boats",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "seed": "tsx scripts/seed.ts",
+    "seed:blogs": "tsx scripts/seed-blogs.ts",
+    "seed:services-banner": "tsx scripts/seed-services-banner.ts",
+    "seed:experience-section": "tsx scripts/seed-experience-section.ts",
+    "seed:new-services": "tsx scripts/seed-new-services.ts",
+    "upload:video": "tsx scripts/upload-video.ts",
+    "upload:hero-video": "tsx scripts/upload-hero-video.ts"
+  },
+  "dependencies": {
+    "dompurify": "^3.3.3",
+    "framer-motion": "^12.38.0",
+    "gsap": "^3.13.0",
+    "isomorphic-dompurify": "^3.8.0",
+    "lucide-react": "^0.555.0",
+    "mongoose": "^9.4.1",
+    "next": "^16.1.6",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-quill-new": "^3.8.3",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.22",
+    "eslint": "^9",
+    "eslint-config-next": "^16.1.6",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.17",
+    "tsx": "^4.20.6",
+    "typescript": "^5"
+  }
+}

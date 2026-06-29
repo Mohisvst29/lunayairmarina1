@@ -1,0 +1,118 @@
+.section {
+    padding: 6rem 2rem;
+    background: #0F172A;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+}
+
+.title {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 3rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.label {
+    color: #94A3B8;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.input,
+.textarea,
+.select {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+    outline: none;
+    border-color: #BF953F;
+}
+
+.textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.checkboxGroup {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.checkbox {
+    margin-top: 0.25rem;
+}
+
+.checkboxLabel {
+    color: #94A3B8;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.submitButton {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 50%, #BF953F 100%);
+    border: none;
+    border-radius: 4px;
+    color: #000;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.submitButton:hover {
+    transform: translateY(-2px);
+}
+
+.statusMessage {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 4px;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    font-size: 0.95rem;
+}
+
+.statusError {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+.statusIcon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}

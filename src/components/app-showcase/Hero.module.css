@@ -1,0 +1,541 @@
+.hero {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 8rem 2rem 4rem;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0a1628 0%, #0f2847 50%, #0a1628 100%);
+}
+
+.bgPattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.2;
+}
+
+/* Yacht Background Image */
+.yachtBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.yachtBg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+    opacity: 0.2;
+}
+
+.yachtBg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(10, 22, 40, 0.8) 0%, rgba(10, 22, 40, 0.95) 100%);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+@media (min-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 600px;
+}
+
+.label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #BF953F;
+    font-weight: 600;
+    margin-bottom: -0.5rem;
+    display: block;
+}
+
+.title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #fff;
+}
+
+.description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: #94A3B8;
+    max-width: 500px;
+}
+
+.actions {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+/* App Store Buttons */
+.storeButtons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.storeBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #000;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.storeBtn:hover {
+    background: #1a1a1a;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.storeIcon {
+    width: 24px;
+    height: 24px;
+}
+
+.storeTextContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.storeSmallText {
+    font-size: 0.65rem;
+    color: #94A3B8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.storeBigText {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Phone Mockups Container */
+.mockupContainer {
+    position: relative;
+    width: 100%;
+    height: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Main Phone */
+.phoneMockup {
+    width: 300px;
+    height: 600px;
+    background: #000000;
+    border-radius: 44px;
+    border: 8px solid #333333;
+    position: relative;
+    box-shadow:
+        0 0 0 2px #1a1a1a,
+        0 30px 60px rgba(0, 0, 0, 0.6),
+        0 0 100px rgba(191, 149, 63, 0.15);
+    overflow: hidden;
+    z-index: 3;
+}
+
+/* Phone Notch */
+.phoneMockup::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 25px;
+    background: #1a1a1a;
+    border-radius: 0 0 15px 15px;
+    z-index: 10;
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #0a3d62 0%, #0a2840 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Phone Header */
+.phoneHeader {
+    padding: 3rem 1rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.backArrow {
+    color: #fff;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.backArrow:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-2px);
+}
+
+.boatName {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Boat Image on Phone */
+.boatImage {
+    width: 100%;
+    padding: 1rem;
+    padding-top: 0;
+}
+
+.boatImageContent {
+    width: 100%;
+    height: 140px;
+    background: url('https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?q=80&w=600&auto=format&fit=crop') center/cover no-repeat;
+    border-radius: 12px;
+    position: relative;
+}
+
+/* Dashboard Grid */
+.dashboardGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 0 16px;
+    flex: 1;
+    overflow-y: auto;
+    align-content: flex-start;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.dashboardGrid::-webkit-scrollbar {
+    display: none;
+}
+
+.dashboardItem {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 12px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+.dashboardItem:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dashboardIcon {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2px;
+}
+
+/* Icon Colors */
+.iconBlue {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+}
+
+.iconGreen {
+    background: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+}
+
+.iconOrange {
+    background: rgba(249, 115, 22, 0.2);
+    color: #fb923c;
+}
+
+.iconPurple {
+    background: rgba(168, 85, 247, 0.2);
+    color: #c084fc;
+}
+
+.iconYellow {
+    background: rgba(234, 179, 8, 0.2);
+    color: #facc15;
+}
+
+.iconTeal {
+    background: rgba(20, 184, 166, 0.2);
+    color: #2dd4bf;
+}
+
+.iconRed {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+}
+
+.iconPink {
+    background: rgba(236, 72, 153, 0.2);
+    color: #f472b6;
+}
+
+.iconIndigo {
+    background: rgba(99, 102, 241, 0.2);
+    color: #818cf8;
+}
+
+.dashboardLabel {
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: #cbd5e1;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.dashboardValue {
+    font-size: 0.6rem;
+    color: #94a3b8;
+    text-align: center;
+    font-weight: 400;
+}
+
+/* Phone nav bar */
+.phoneNav {
+    padding: 16px 24px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 22, 40, 0.95);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navItem {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    color: #64748b;
+    transition: all 0.3s ease;
+}
+
+.navItem:hover {
+    color: #94a3b8;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.navItem.active {
+    color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+/* Secondary Phone Cards */
+.floatingCard {
+    position: absolute;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50%) scale(0.95);
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.mockupContainer:hover .floatingCard,
+.mockupContainer:focus-within .floatingCard,
+.mockupContainer.interacting .floatingCard {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) scale(1);
+    pointer-events: auto;
+    animation: float 4s ease-in-out infinite;
+}
+
+.floatingCardRight {
+    right: -20px;
+    top: 50%;
+    width: 180px;
+    padding: 1rem;
+}
+
+.floatingCardLeft {
+    left: -20px;
+    top: 30%;
+    width: 160px;
+    padding: 0.75rem;
+}
+
+.mockupContainer:hover .floatingCardLeft,
+.mockupContainer:focus-within .floatingCardLeft,
+.mockupContainer.interacting .floatingCardLeft {
+    animation-delay: 1s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(-50%);
+    }
+
+    50% {
+        transform: translateY(calc(-50% - 10px));
+    }
+}
+
+/* Card Content */
+.cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 0.75rem;
+}
+
+.cardBoatName {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #0a1628;
+}
+
+.checklistTitle {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #0a1628;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.checklistSection {
+    margin-bottom: 0.5rem;
+}
+
+.checklistSectionTitle {
+    font-size: 0.55rem;
+    color: #64748b;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+}
+
+.checklistItems {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.checklistItem {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.55rem;
+    color: #334155;
+}
+
+.checkmark {
+    color: #22c55e;
+}
+
+/* Responsive */
+@media (max-width: 1023px) {
+    .mockupContainer {
+        height: 500px;
+    }
+
+    .phoneMockup {
+        width: 240px;
+        height: 480px;
+    }
+
+    .floatingCardRight,
+    .floatingCardLeft {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero {
+        padding: 6rem 1rem 3rem;
+    }
+
+    .mockupContainer {
+        height: 400px;
+    }
+
+    .phoneMockup {
+        width: 200px;
+        height: 400px;
+    }
+}

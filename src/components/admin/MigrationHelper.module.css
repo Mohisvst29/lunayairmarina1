@@ -1,0 +1,211 @@
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: clamp(1rem, 3vw, 2rem);
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.title {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.75rem;
+}
+
+.description {
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    color: #6b7280;
+    margin-bottom: 1.25rem;
+}
+
+.info {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: clamp(1rem, 2vw, 1.25rem);
+    margin-bottom: 1.25rem;
+}
+
+.info h4 {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.75rem;
+}
+
+.info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info li {
+    padding: 0.5rem 0;
+    font-size: clamp(0.8rem, 1.5vw, 0.875rem);
+    color: #6b7280;
+    border-bottom: 1px solid #e5e7eb;
+    word-break: break-all;
+}
+
+.info li:last-child {
+    border-bottom: none;
+}
+
+.info li strong {
+    color: #0c4fad;
+    font-family: monospace;
+}
+
+.button {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    min-height: 48px;
+    background: linear-gradient(135deg, #0c4fad 0%, #084a9d 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 4px rgba(12, 79, 173, 0.2);
+}
+
+.button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #084a9d 0%, #063d7e 100%);
+    box-shadow: 0 4px 8px rgba(12, 79, 173, 0.3);
+    transform: translateY(-1px);
+}
+
+.button:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.success,
+.error {
+    margin-top: 1.25rem;
+    padding: clamp(1rem, 2vw, 1.25rem);
+    border-radius: 8px;
+}
+
+.success {
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    color: #166534;
+}
+
+.error {
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+    color: #991b1b;
+}
+
+.success h4,
+.error h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    font-weight: 600;
+}
+
+.success p,
+.error p {
+    margin: 0.5rem 0;
+    font-size: clamp(0.8rem, 1.5vw, 0.875rem);
+}
+
+.updates {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #86efac;
+}
+
+.updates h5 {
+    margin: 0 0 0.5rem 0;
+    font-size: clamp(0.8rem, 1.5vw, 0.875rem);
+    font-weight: 600;
+}
+
+.updates ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.updates li {
+    padding: 0.375rem 0;
+    font-size: clamp(0.75rem, 1.5vw, 0.8125rem);
+    font-family: monospace;
+    word-break: break-all;
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .card {
+        border-radius: 10px;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    .container {
+        padding: 0.75rem;
+    }
+
+    .card {
+        padding: 1rem;
+        border-radius: 8px;
+    }
+
+    .info {
+        padding: 0.75rem;
+    }
+
+    .button {
+        padding: 0.75rem 1rem;
+    }
+
+    .success,
+    .error {
+        padding: 0.75rem;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+    .container {
+        padding: 0.5rem;
+    }
+
+    .card {
+        padding: 0.75rem;
+    }
+
+    .title {
+        font-size: 1.125rem;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .button {
+        min-height: 48px;
+    }
+}

@@ -1,0 +1,68 @@
+.floatingButton {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4),
+    0 0 0 0 rgba(37, 211, 102, 0);
+  z-index: 1000;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s ease;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  display: none; /* Hidden by default, shown only on mobile */
+}
+
+.floatingButton svg {
+  width: 32px;
+  height: 32px;
+}
+
+.floatingButton:active {
+  transform: scale(0.95);
+}
+
+.floatingButton:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(37, 211, 102, 0.5),
+    0 0 0 4px rgba(37, 211, 102, 0.1);
+}
+
+/* Show only on mobile */
+@media (max-width: 768px) {
+  .floatingButton {
+    display: flex;
+  }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 480px) {
+  .floatingButton {
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+  }
+
+  .floatingButton svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floatingButton {
+    transition: none;
+  }
+
+  .floatingButton:hover {
+    transform: none;
+  }
+}
+

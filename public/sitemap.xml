@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- الصفحة الرئيسية -->
+  <url>
+    <loc>https://www.lunayairmarina.com/</loc>
+    <priority>1.0</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <!-- الصفحات الثابتة -->
+  <url>
+    <loc>https://www.lunayairmarina.com/services</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.lunayairmarina.com/about</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.lunayairmarina.com/about#careers</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.lunayairmarina.com/blog</loc>
+    <priority>0.9</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.lunayairmarina.com/app</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.lunayairmarina.com/contact</loc>
+    <priority>0.6</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+
+  <!-- صفحات الخدمات -->
+  <url>
+    <loc>https://www.lunayairmarina.com/services/yacht-boat-management</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.lunayairmarina.com/services/care-cleaning</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.lunayairmarina.com/services/investment</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.lunayairmarina.com/services/maintenance</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.lunayairmarina.com/services/financial-affairs</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.lunayairmarina.com/services/administrative-affairs</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.lunayairmarina.com/services/crew-preparation</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.lunayairmarina.com/services/booking-trip-planning</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- المقالات -->
+  <url>
+    <loc>https://www.lunayairmarina.com/blog/arab-and-regional-boat-and-yacht-exhibitions-2026-key-marine-events-and-market-trends</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.lunayairmarina.com/blog/luxury-care-for-your-yachts-and-boats-in-the-gulf-countries-limitless-cleanliness-and-excellence</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+</url>
+
+  <url>
+    <loc>https://www.lunayairmarina.com/blog/best-investment-opportunities-in-boat-and-yacht-rentals-in-the-gulf-countries-a-promising-marine-tourism-market</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+</urlset>

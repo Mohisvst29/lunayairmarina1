@@ -1,0 +1,109 @@
+.section {
+  position: relative;
+  padding: clamp(64px, 10vw, 140px) clamp(24px, 8vw, 140px);
+  background-image: url('/contact-bg.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.inner {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 5vw, 56px);
+}
+
+.header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  color: #ffffff;
+}
+
+.header h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(46px, 6vw, 68px);
+  margin: 0;
+  color: #ffffff;
+}
+
+.header p {
+  max-width: 560px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #ffffff;
+}
+
+.cards {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(24px, 4vw, 38px);
+}
+
+.card {
+  position: relative;
+  padding: clamp(24px, 4vw, 42px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  color: #ffffff;
+  min-height: 320px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  font-size: 20px;
+  text-transform: capitalize;
+  font-weight: 600;
+  margin: 0;
+  color: #ffffff;
+}
+
+.card p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #ffffff;
+  text-align: start;
+  text-wrap: balance;
+}
+
+.badge {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 20px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.footer {
+  margin-top: 8px;
+  font-weight: 600;
+  color: #10123a;
+}
+
+
+@media (max-width: 600px) {
+  .card {
+    min-height: auto;
+  }
+}
+
+
