@@ -56,12 +56,20 @@ const ServiceHeader = forwardRef<HTMLElement, ServiceHeaderProps>(
                         <h1 className={styles.heroTitle} data-animate="heading">
                             {title}
                         </h1>
-                        <p className={styles.heroLead} data-animate="heading">
-                            {description}
-                        </p>
-                        <p className={styles.heroDescription} data-animate="heading">
-                            {longDescription}
-                        </p>
+                        {description && (
+                            <div 
+                                className={styles.heroLead} 
+                                data-animate="heading"
+                                dangerouslySetInnerHTML={{ __html: description }}
+                            />
+                        )}
+                        {longDescription && longDescription !== description && (
+                            <div 
+                                className={styles.heroDescription} 
+                                data-animate="heading"
+                                dangerouslySetInnerHTML={{ __html: longDescription }}
+                            />
+                        )}
                     </div>
 
                     <div className={styles.heroMetaRow}>

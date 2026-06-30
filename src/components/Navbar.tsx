@@ -103,14 +103,18 @@ export default function Navbar() {
     isBlogPage,
   });
   // Map services to dropdown items
-  const serviceItems = services.map((service) => ({
-    label: service.title,
-    subtitle:
-      service.description?.substring(0, 50) +
-        (service.description?.length > 50 ? "..." : "") || "",
-    href: `/services/${service.slug || service._id}`,
-    icon: getServiceIcon(service.category),
-  }));
+  const stripHtml = (html?: string) => html ? html.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').trim() : '';
+  const serviceItems = services.map((service) => {
+    const cleanDesc = stripHtml(service.description);
+    return {
+      label: service.title,
+      subtitle:
+        cleanDesc.substring(0, 50) +
+          (cleanDesc.length > 50 ? "..." : "") || "",
+      href: `/services/${service.slug || service._id}`,
+      icon: getServiceIcon(service.category),
+    };
+  });
 
   const navLinks = [
     { label: t("nav.home"), href: "/" },
