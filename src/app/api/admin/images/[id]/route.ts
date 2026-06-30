@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
-import { readState, writeState } from '@/lib/localDbHelper';
+import connectDB from '@/lib/db';
+import mongoose from 'mongoose';
+import { GridFSBucket } from 'mongodb';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -8,13 +10,13 @@ export async function DELETE(request: Request, props: { params: Promise<{ id: st
     const params = await props.params;
     const id = params.id;
     try {
-        const state = readState();
-        const filtered = state.images.filter((i: any) => i._id !== id);
-        if (filtered.length === state.images.length) {
-            return NextResponse.json({ error: 'Image not found' }, { status: 404 });
+        await connectDB();
+        const db = mongoose.connection.db;
+        if (!db) {
+            throw new Error('Database connection not initialized.');
         }
-        state.images = filtered;
-        writeState(state);
+        const bucket = new GridFSBucket(db, { bucketName: 'images' });
+        await bucket.delete(new mongoose.Types.ObjectId(id));
         return NextResponse.json({ success: true });
     } catch (error) {
         console.error('Delete image error:', error);
@@ -26,34 +28,53 @@ export async function PUT(request: Request, props: { params: Promise<{ id: strin
     const params = await props.params;
     const id = params.id;
     try {
-        const state = readState();
-        const index = state.images.findIndex((i: any) => i._id === id);
-
-        if (index === -1) {
+        await connectDB();
+        const db = mongoose.connection.db;
+        if (!db) {
+            throw new Error('Database connection not initialized.');
+        }
+        const bucket = new GridFSBucket(db, { bucketName: 'images' });
+        const filesCollection = db.collection('images.files');
+        
+        const oldFile: any = await filesCollection.findOne({ _id: new mongoose.Types.ObjectId(id) });
+        if (!oldFile) {
             return NextResponse.json({ error: 'Image not found' }, { status: 404 });
+        }
+
+        // Delete old file from GridFS first
+        try {
+            await bucket.delete(new mongoose.Types.ObjectId(id));
+        } catch (e) {
+            console.error('Error deleting old image in PUT replacement:', e);
         }
 
         const formData = await request.formData();
         const file = formData.get('file') as File;
-
         if (!file) {
             return NextResponse.json({ error: 'No file provided' }, { status: 400 });
         }
 
-        const url = `/newbackgrounds/${file.name}`;
-        state.images[index] = {
-            ...state.images[index],
-            filename: file.name,
-            url: url,
-        };
+        const buffer = Buffer.from(await file.arrayBuffer());
+        const uploadStream = bucket.openUploadStream(file.name, {
+            id: new mongoose.Types.ObjectId(id), // keep the exact same ID
+            metadata: {
+                ...oldFile.metadata,
+                contentType: file.type,
+            }
+        });
 
-        writeState(state);
+        uploadStream.end(buffer);
+
+        await new Promise((resolve, reject) => {
+            uploadStream.on('finish', resolve);
+            uploadStream.on('error', reject);
+        });
 
         return NextResponse.json({
             success: true,
             fileId: id,
             filename: file.name,
-            slug: state.images[index].metadata?.slug,
+            slug: oldFile.metadata?.slug,
         });
     } catch (error) {
         console.error('Replace image error:', error);
@@ -65,30 +86,29 @@ export async function PATCH(request: Request, props: { params: Promise<{ id: str
     const params = await props.params;
     const id = params.id;
     try {
-        const state = readState();
-        const index = state.images.findIndex((i: any) => i._id === id);
-
-        if (index === -1) {
-            return NextResponse.json({ error: 'Image not found' }, { status: 404 });
+        await connectDB();
+        const db = mongoose.connection.db;
+        if (!db) {
+            throw new Error('Database connection not initialized.');
         }
+        const filesCollection = db.collection('images.files');
 
         const body = await request.json();
         const { order, section } = body;
 
-        if (typeof order === 'number') {
-            state.images[index].metadata = {
-                ...state.images[index].metadata,
-                order: order
-            };
-        }
-        if (section) {
-            state.images[index].metadata = {
-                ...state.images[index].metadata,
-                section: section
-            };
+        const updateDoc: any = {};
+        if (typeof order === 'number') updateDoc['metadata.order'] = order;
+        if (section !== undefined) updateDoc['metadata.section'] = section;
+
+        const result = await filesCollection.updateOne(
+            { _id: new mongoose.Types.ObjectId(id) },
+            { $set: updateDoc }
+        );
+
+        if (result.matchedCount === 0) {
+            return NextResponse.json({ error: 'Image not found' }, { status: 404 });
         }
 
-        writeState(state);
         return NextResponse.json({ success: true });
     } catch (error) {
         console.error('Update image error:', error);

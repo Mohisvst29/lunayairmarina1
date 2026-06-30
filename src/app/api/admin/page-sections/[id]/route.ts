@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { readState, writeState } from "@/lib/localDbHelper";
+import connectDB from "@/lib/db";
+import PageSection from "@/models/PageSection";
 
 export async function PATCH(
   request: NextRequest,
@@ -8,45 +9,32 @@ export async function PATCH(
   const { id } = await params;
 
   try {
+    await connectDB();
     const body = await request.json();
-    const state = readState();
 
-    let foundPage = "";
-    let foundKey = "";
-    let foundSection: any = null;
+    const query: any = id.match(/^[0-9a-fA-F]{24}$/)
+      ? { _id: id }
+      : id.includes('-')
+        ? { page: id.split('-')[0], key: id.split('-')[1] }
+        : { key: id };
 
-    for (const pageName of Object.keys(state.pageSections)) {
-      const pageSections = state.pageSections[pageName];
-      for (const key of Object.keys(pageSections)) {
-        const sec = pageSections[key];
-        if (sec._id === id || sec.key === id || `${pageName}-${key}` === id) {
-          foundPage = pageName;
-          foundKey = key;
-          foundSection = sec;
-          break;
-        }
-      }
-      if (foundSection) break;
-    }
+    const updateFields: any = {};
+    if (body.enabled !== undefined) updateFields.enabled = body.enabled;
+    if (body.content !== undefined) updateFields.content = body.content;
 
-    if (!foundSection) {
+    const updatedSection = await PageSection.findOneAndUpdate(
+      query,
+      { $set: updateFields },
+      { new: true } as any
+    );
+
+    if (!updatedSection) {
       return NextResponse.json({ error: "Section not found" }, { status: 404 });
     }
 
-    const { key, page, _id, ...updateData } = body;
-
-    state.pageSections[foundPage][foundKey] = {
-      ...foundSection,
-      ...updateData,
-      _id: foundSection._id,
-      page: foundSection.page,
-      key: foundSection.key,
-    };
-
-    writeState(state);
-    return NextResponse.json(state.pageSections[foundPage][foundKey]);
+    return NextResponse.json(updatedSection);
   } catch (error) {
-    console.error(`Failed to update page section ${id}:`, error);
+    console.error(`Failed to update page section ${id} in DB:`, error);
     return NextResponse.json(
       { error: "Failed to update section content" },
       { status: 500 }

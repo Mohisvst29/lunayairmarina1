@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
-import { readState, writeState } from '@/lib/localDbHelper';
+import connectDB from '@/lib/db';
+import mongoose from 'mongoose';
+import { GridFSBucket } from 'mongodb';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -8,13 +10,13 @@ export async function DELETE(request: Request, props: { params: Promise<{ id: st
     const params = await props.params;
     const id = params.id;
     try {
-        const state = readState();
-        const filtered = state.videos.filter((v: any) => v._id !== id);
-        if (filtered.length === state.videos.length) {
-            return NextResponse.json({ error: 'Video not found' }, { status: 404 });
+        await connectDB();
+        const db = mongoose.connection.db;
+        if (!db) {
+            throw new Error('Database connection not initialized.');
         }
-        state.videos = filtered;
-        writeState(state);
+        const bucket = new GridFSBucket(db, { bucketName: 'videos' });
+        await bucket.delete(new mongoose.Types.ObjectId(id));
         return NextResponse.json({ message: 'Video deleted successfully' });
     } catch (error) {
         console.error('Delete video error:', error);
@@ -26,26 +28,46 @@ export async function PUT(request: Request, props: { params: Promise<{ id: strin
     const params = await props.params;
     const id = params.id;
     try {
-        const state = readState();
-        const index = state.videos.findIndex((v: any) => v._id === id);
-
-        if (index === -1) {
+        await connectDB();
+        const db = mongoose.connection.db;
+        if (!db) {
+            throw new Error('Database connection not initialized.');
+        }
+        const bucket = new GridFSBucket(db, { bucketName: 'videos' });
+        const filesCollection = db.collection('videos.files');
+        
+        const oldFile: any = await filesCollection.findOne({ _id: new mongoose.Types.ObjectId(id) });
+        if (!oldFile) {
             return NextResponse.json({ error: 'Video not found' }, { status: 404 });
+        }
+
+        try {
+            await bucket.delete(new mongoose.Types.ObjectId(id));
+        } catch (e) {
+            console.error('Error deleting old video in PUT replacement:', e);
         }
 
         const formData = await request.formData();
         const file = formData.get('file') as File;
-
         if (!file) {
             return NextResponse.json({ error: 'No file provided' }, { status: 400 });
         }
 
-        state.videos[index] = {
-            ...state.videos[index],
-            filename: file.name,
-        };
+        const buffer = Buffer.from(await file.arrayBuffer());
+        const uploadStream = bucket.openUploadStream(file.name, {
+            id: new mongoose.Types.ObjectId(id),
+            metadata: {
+                ...oldFile.metadata,
+                contentType: file.type,
+            }
+        });
 
-        writeState(state);
+        uploadStream.end(buffer);
+
+        await new Promise((resolve, reject) => {
+            uploadStream.on('finish', resolve);
+            uploadStream.on('error', reject);
+        });
 
         return NextResponse.json({
             fileId: id,
@@ -61,36 +83,30 @@ export async function PATCH(request: Request, props: { params: Promise<{ id: str
     const params = await props.params;
     const id = params.id;
     try {
-        const state = readState();
-        const index = state.videos.findIndex((v: any) => v._id === id);
-
-        if (index === -1) {
-            return NextResponse.json({ error: 'Video not found' }, { status: 404 });
+        await connectDB();
+        const db = mongoose.connection.db;
+        if (!db) {
+            throw new Error('Database connection not initialized.');
         }
+        const filesCollection = db.collection('videos.files');
 
         const body = await request.json();
         const { order, section, poster } = body;
 
-        if (typeof order === 'number') {
-            state.videos[index].metadata = {
-                ...state.videos[index].metadata,
-                order: order
-            };
-        }
-        if (section) {
-            state.videos[index].metadata = {
-                ...state.videos[index].metadata,
-                section: section
-            };
-        }
-        if (poster !== undefined) {
-            state.videos[index].metadata = {
-                ...state.videos[index].metadata,
-                poster: poster
-            };
+        const updateDoc: any = {};
+        if (typeof order === 'number') updateDoc['metadata.order'] = order;
+        if (section !== undefined) updateDoc['metadata.section'] = section;
+        if (poster !== undefined) updateDoc['metadata.poster'] = poster;
+
+        const result = await filesCollection.updateOne(
+            { _id: new mongoose.Types.ObjectId(id) },
+            { $set: updateDoc }
+        );
+
+        if (result.matchedCount === 0) {
+            return NextResponse.json({ error: 'Video not found' }, { status: 404 });
         }
 
-        writeState(state);
         return NextResponse.json({ success: true });
     } catch (error) {
         console.error('Update video metadata error:', error);

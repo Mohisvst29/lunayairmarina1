@@ -343,12 +343,14 @@
         "en": {
           "title": "Extensive Experience and Exceptional Professionalism",
           "description": "We are a trusted company in the yacht management sector. Our team includes highly competent yacht managers experienced in complex operations. Our distinguished relationships with leading professionals in the sector, from brokers and marine engineers to insurance experts, ensure a seamless experience and optimal results at every stage of your yacht's lifecycle.",
-          "imageId": "ocean-sunrise"
+          "imageId": "/api/images/6a42b997a568306b76b6421c",
+          "videoId": ""
         },
         "ar": {
           "title": "خبرة واسعة واحترافية استثنائية",
           "description": "نحن شركة موثوقة في قطاع إدارة اليخوت، يضم فريقنا مديري يخوت على أعلى مستوى من الكفاءة والخبرة في العمليات المعقدة. علاقاتنا المتميزة مع أبرز المحترفين في هذا القطاع، من وسطاء ومهندسين بحريين وخبراء تأمين، تضمن لك تجربة سلسة ونتائج مثالية في كل مرحلة من مراحل دورة حياة يختك.",
-          "imageId": "ocean-sunrise"
+          "imageId": "/api/images/6a42b8a5a568306b76b6420a",
+          "videoId": ""
         }
       }
     },

@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
-import { readState } from '@/lib/localDbHelper';
+import connectDB from '@/lib/db';
+import mongoose from 'mongoose';
+import { GridFSBucket } from 'mongodb';
 import { promises as fs } from 'fs';
 import { join } from 'path';
 
@@ -59,8 +61,36 @@ export async function GET(request: Request, props: { params: Promise<{ slug: str
     }
 
     try {
-        const images = readState().images;
-        const imgObj = images.find((i: any) => i._id === slug || i.metadata?.slug === slug || i.filename === slug);
+        await connectDB();
+        const db = mongoose.connection.db;
+        if (db) {
+            const file = await db.collection('images.files').findOne({
+                $or: [
+                    { 'metadata.slug': slug },
+                    { filename: slug },
+                    ...(slug.match(/^[0-9a-fA-F]{24}$/) ? [{ _id: new mongoose.Types.ObjectId(slug) }] : [])
+                ]
+            });
+            if (file) {
+                const bucket = new GridFSBucket(db, { bucketName: 'images' });
+                const downloadStream = bucket.openDownloadStream(file._id);
+                const contentType = file.metadata?.contentType || 'image/jpeg';
+                // @ts-ignore
+                return new Response(downloadStream, {
+                    headers: {
+                        'Content-Type': contentType,
+                        'Cache-Control': 'public, max-age=31536000, immutable',
+                    }
+                });
+            }
+        }
+
+        const localImages = [
+            { _id: 'ocean-sunrise', url: '/newbackgrounds/hero-mainpage.webp', metadata: { slug: 'ocean-sunrise' } },
+            { _id: 'about-hero', url: '/newbackgrounds/hero-aboutuspage.webp', metadata: { slug: 'about-hero' } },
+            { _id: 'about-story', url: '/newbackgrounds/story-aboutuspage.webp', metadata: { slug: 'about-story' } },
+        ];
+        const imgObj = localImages.find((i: any) => i._id === slug || i.metadata?.slug === slug || i.filename === slug);
         const targetUrl = imgObj?.url || `https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80`;
         return await getImageResponse(targetUrl);
     } catch (error) {

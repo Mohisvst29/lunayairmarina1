@@ -1,35 +1,29 @@
 import { NextResponse } from 'next/server';
-import { readState, writeState } from '@/lib/localDbHelper';
+import connectDB from '@/lib/db';
+import Service from '@/models/Service';
 
 export async function GET() {
     try {
-        const state = readState();
-        return NextResponse.json(state.services);
+        await connectDB();
+        const services = await Service.find({} as any).sort({ order: 1 });
+        return NextResponse.json(services);
     } catch (error) {
-        console.error('Failed to fetch services:', error);
+        console.error('Failed to fetch services from DB:', error);
         return NextResponse.json({ error: 'Failed to fetch services' }, { status: 500 });
     }
 }
 
 export async function POST(request: Request) {
     try {
+        await connectDB();
         const body = await request.json();
-        const state = readState();
 
-        const newService = {
-            ...body,
-            _id: body._id || `service-${Date.now()}`,
-            slug: body.slug || `service-${Date.now()}`,
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString(),
-        };
-
-        state.services.push(newService);
-        writeState(state);
+        const newService = new Service(body);
+        await newService.save();
 
         return NextResponse.json(newService, { status: 201 });
     } catch (error) {
-        console.error('Failed to create service:', error);
+        console.error('Failed to create service in DB:', error);
         return NextResponse.json({ error: 'Failed to create service' }, { status: 500 });
     }
 }

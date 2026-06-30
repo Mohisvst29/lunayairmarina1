@@ -1,33 +1,36 @@
 import { NextRequest, NextResponse } from "next/server";
-import { readState, writeState } from "@/lib/localDbHelper";
+import connectDB from "@/lib/db";
+import HomeSection from "@/models/HomeSection";
 
 export async function PATCH(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
+    await connectDB();
     const { id } = await params;
     const body = await request.json();
 
-    const state = readState();
-    const index = state.homeSections.findIndex((s: any) => s._id === id || s.key === id);
+    const query: any = id.match(/^[0-9a-fA-F]{24}$/) ? { _id: id } : { key: id };
 
-    if (index === -1) {
+    const updateData: any = {};
+    if (body.enabled !== undefined) updateData.enabled = body.enabled;
+    if (body.content !== undefined) updateData.content = body.content;
+    if (body.page !== undefined) updateData.page = body.page;
+
+    const updatedSection = await HomeSection.findOneAndUpdate(
+      query,
+      { $set: updateData },
+      { new: true } as any
+    );
+
+    if (!updatedSection) {
       return NextResponse.json({ error: "Section not found" }, { status: 404 });
     }
 
-    state.homeSections[index] = {
-      ...state.homeSections[index],
-      ...body,
-      key: state.homeSections[index].key,
-      label: state.homeSections[index].label,
-      order: state.homeSections[index].order,
-    };
-
-    writeState(state);
-    return NextResponse.json(state.homeSections[index]);
+    return NextResponse.json(updatedSection);
   } catch (error) {
-    console.error("Failed to update home section:", error);
+    console.error("Failed to update home section in DB:", error);
     return NextResponse.json({ error: "Update failed" }, { status: 500 });
   }
 }

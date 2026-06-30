@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { readState, writeState } from "@/lib/localDbHelper";
+import connectDB from "@/lib/db";
+import PageSection from "@/models/PageSection";
 
 const ABOUT_DEFAULTS = [
   { page: "about", key: "hero", label: "Hero", order: 100 },
@@ -35,19 +36,15 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const state = readState();
-    if (!state.pageSections[page]) {
-      state.pageSections[page] = {};
-    }
+    await connectDB();
     const defaults = page === "about" ? ABOUT_DEFAULTS : APP_DEFAULTS;
 
-    let changed = false;
-    const currentSections = state.pageSections[page];
+    const currentSections = await PageSection.find({ page });
 
-    defaults.forEach((def) => {
-      if (!currentSections[def.key]) {
-        currentSections[def.key] = {
-          _id: `${page}-${def.key}`,
+    for (const def of defaults) {
+      const exists = currentSections.some((s) => s.key === def.key);
+      if (!exists) {
+        const newSec = new PageSection({
           page: def.page,
           key: def.key,
           label: def.label,
@@ -57,19 +54,15 @@ export async function GET(request: NextRequest) {
             en: { title: def.label, description: "" },
             ar: { title: def.label, description: "" }
           }
-        };
-        changed = true;
+        });
+        await newSec.save();
       }
-    });
-
-    if (changed) {
-      writeState(state);
     }
 
-    const sectionsArray = Object.values(currentSections).sort((a: any, b: any) => a.order - b.order);
-    return NextResponse.json(sectionsArray);
+    const allSections = await PageSection.find({ page }).sort({ order: 1 });
+    return NextResponse.json(allSections);
   } catch (error) {
-    console.error(`Failed to fetch ${page} sections:`, error);
+    console.error(`Failed to fetch ${page} sections from DB:`, error);
     return NextResponse.json({ error: `Failed to fetch ${page} sections` }, { status: 500 });
   }
 }

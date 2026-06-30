@@ -1,33 +1,32 @@
 import { NextResponse } from 'next/server';
-import { readState, writeState } from '@/lib/localDbHelper';
+import connectDB from '@/lib/db';
+import Blog from '@/models/Blog';
 
 export async function PUT(request: Request, props: { params: Promise<{ id: string }> }) {
     const params = await props.params;
     const id = params.id;
     try {
+        await connectDB();
         const body = await request.json();
-        const state = readState();
-        const index = state.blogs.findIndex((b: any) => b._id === id || b.slug === id);
+        const query = id.match(/^[0-9a-fA-F]{24}$/) ? { _id: id } : { slug: id };
 
-        if (index === -1) {
+        const updatedBlog = await Blog.findOneAndUpdate(
+            query,
+            { $set: body },
+            { new: true } as any
+        );
+
+        if (!updatedBlog) {
             return NextResponse.json({ error: 'Blog not found' }, { status: 404 });
         }
 
-        state.blogs[index] = {
-            ...state.blogs[index],
-            ...body,
-            _id: id,
-            updatedAt: new Date().toISOString(),
-        };
-
-        writeState(state);
-        return NextResponse.json(state.blogs[index], {
+        return NextResponse.json(updatedBlog, {
             headers: {
                 'Cache-Control': 'no-store, no-cache, must-revalidate',
             },
         });
     } catch (error) {
-        console.error('Failed to update blog:', error);
+        console.error('Failed to update blog in DB:', error);
         return NextResponse.json({ error: 'Failed to update blog' }, { status: 500 });
     }
 }
@@ -40,22 +39,21 @@ export async function DELETE(request: Request, props: { params: Promise<{ id: st
     const params = await props.params;
     const id = params.id;
     try {
-        const state = readState();
-        const filtered = state.blogs.filter((b: any) => b._id !== id && b.slug !== id);
+        await connectDB();
+        const query = id.match(/^[0-9a-fA-F]{24}$/) ? { _id: id } : { slug: id };
 
-        if (filtered.length === state.blogs.length) {
+        const deletedBlog = await Blog.findOneAndDelete(query);
+        if (!deletedBlog) {
             return NextResponse.json({ error: 'Blog not found' }, { status: 404 });
         }
 
-        state.blogs = filtered;
-        writeState(state);
         return NextResponse.json({ success: true }, {
             headers: {
                 'Cache-Control': 'no-store, no-cache, must-revalidate',
             },
         });
     } catch (error) {
-        console.error('Failed to delete blog:', error);
+        console.error('Failed to delete blog from DB:', error);
         return NextResponse.json({ error: 'Failed to delete blog' }, { status: 500 });
     }
 }
