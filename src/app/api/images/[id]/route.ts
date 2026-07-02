@@ -133,6 +133,7 @@ export async function GET(request: Request, props: { params: Promise<{ id: strin
 
             // Yacht Management
             { _id: 'service-yacht-management', url: 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=1200&q=80', metadata: { slug: 'service-yacht-management' } },
+            { _id: '6a46ac5073141376894ad467', url: 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=1200&q=80', metadata: { slug: 'service-yacht-management' } },
             { _id: 'gallery-yacht-ops-bridge', url: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1200&q=80', metadata: { slug: 'gallery-yacht-ops-bridge' } },
             { _id: 'gallery-yacht-ops-maint', url: 'https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1200&q=80', metadata: { slug: 'gallery-yacht-ops-maint' } },
 
@@ -143,6 +144,7 @@ export async function GET(request: Request, props: { params: Promise<{ id: strin
 
             // Visiting Yacht Concierge
             { _id: 'service-visiting-yacht', url: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80', metadata: { slug: 'service-visiting-yacht' } },
+            { _id: '6a436381a568306b76b6422e', url: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80', metadata: { slug: 'service-visiting-yacht' } },
             { _id: 'gallery-visiting-yacht-vip', url: 'https://images.unsplash.com/photo-1473177104440-ffee2f376098?auto=format&fit=crop&w=1200&q=80', metadata: { slug: 'gallery-visiting-yacht-vip' } },
             { _id: 'gallery-visiting-yacht-port', url: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1200&q=80', metadata: { slug: 'gallery-visiting-yacht-port' } },
 
