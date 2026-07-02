@@ -119,7 +119,7 @@ const ServiceBenefits = forwardRef<HTMLElement, ServiceBenefitsProps>(({ benefit
                                     )}
                                 </div>
                                 <h3>{benefit.title}</h3>
-                                <p>{benefit.description}</p>
+                                <p>{benefit.description.replace(/&nbsp;/g, ' ')}</p>
                             </article>
                         );
                     })

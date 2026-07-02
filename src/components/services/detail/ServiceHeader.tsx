@@ -60,14 +60,14 @@ const ServiceHeader = forwardRef<HTMLElement, ServiceHeaderProps>(
                             <div 
                                 className={styles.heroLead} 
                                 data-animate="heading"
-                                dangerouslySetInnerHTML={{ __html: description }}
+                                dangerouslySetInnerHTML={{ __html: description.replace(/&nbsp;/g, ' ') }}
                             />
                         )}
                         {longDescription && longDescription !== description && (
                             <div 
                                 className={styles.heroDescription} 
                                 data-animate="heading"
-                                dangerouslySetInnerHTML={{ __html: longDescription }}
+                                dangerouslySetInnerHTML={{ __html: longDescription.replace(/&nbsp;/g, ' ') }}
                             />
                         )}
                     </div>

@@ -45,7 +45,7 @@ const ServiceDescription = forwardRef<HTMLElement, ServiceDescriptionProps>(
                         </h2>
                         <div className={styles.bodyText}>
                             <div 
-                                dangerouslySetInnerHTML={{ __html: longDescription || description }} 
+                                dangerouslySetInnerHTML={{ __html: (longDescription || description).replace(/&nbsp;/g, ' ') }} 
                                 data-animate="description"
                             />
                         </div>
