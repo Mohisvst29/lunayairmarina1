@@ -4,6 +4,7 @@ import BlogPostClient from '@/components/blog/BlogPostClient';
 import connectDB from '@/lib/db';
 import Blog from '@/models/Blog';
 import mongoose from 'mongoose';
+import { readState } from '@/lib/localDbHelper';
 
 interface Props {
     params: Promise<{ slug: string }>;
@@ -11,51 +12,91 @@ interface Props {
 }
 
 async function getPost(slug: string, showUnpublished = false) {
-    await connectDB();
-    const decodedSlug = decodeURIComponent(slug); // Decode URL-encoded Arabic text
-    
-    let query: any = {
-        $or: [{ slug: slug }, { slug: decodedSlug }],
-        published: true
-    };
-    if (showUnpublished) {
-        delete query.published;
-    }
-    
-    // Check if it's a valid ObjectId
-    if (mongoose.Types.ObjectId.isValid(slug)) {
-        query = {
-            $or: [{ slug: slug }, { slug: decodedSlug }, { _id: new mongoose.Types.ObjectId(slug) }]
+    try {
+        await connectDB();
+        const decodedSlug = decodeURIComponent(slug); // Decode URL-encoded Arabic text
+        
+        let query: any = {
+            $or: [{ slug: slug }, { slug: decodedSlug }],
+            published: true
         };
-        if (!showUnpublished) {
-            query.published = true;
+        if (showUnpublished) {
+            delete query.published;
         }
-    }
+        
+        // Check if it's a valid ObjectId
+        if (mongoose.Types.ObjectId.isValid(slug)) {
+            query = {
+                $or: [{ slug: slug }, { slug: decodedSlug }, { _id: new mongoose.Types.ObjectId(slug) }]
+            };
+            if (!showUnpublished) {
+                query.published = true;
+            }
+        }
 
-    const post = await Blog.findOne(query).exec();
+        const post = await Blog.findOne(query).exec();
 
-    if (!post) {
+        if (!post) {
+            return null;
+        }
+
+        return JSON.parse(JSON.stringify(post.toObject())); // Serialize for client component
+    } catch (error) {
+        console.warn(`Failed to fetch blog post ${slug} from DB, falling back to localState:`, error);
+        try {
+            const state = readState();
+            if (state && Array.isArray(state.blogs)) {
+                const decodedSlug = decodeURIComponent(slug);
+                const post = state.blogs.find((b: any) => {
+                    const isMatch = b.slug === slug || b.slug === decodedSlug || b._id?.toString() === slug;
+                    if (showUnpublished) return isMatch;
+                    return isMatch && b.published !== false;
+                });
+                if (post) {
+                    return JSON.parse(JSON.stringify(post));
+                }
+            }
+        } catch (fallbackError) {
+            console.error("Local blog post fallback failed:", fallbackError);
+        }
         return null;
     }
-
-    return JSON.parse(JSON.stringify(post.toObject())); // Serialize for client component
 }
 
 async function getRelatedPosts(currentPost: any) {
-    await connectDB();
-    const currentId = mongoose.Types.ObjectId.isValid(currentPost._id)
-        ? new mongoose.Types.ObjectId(currentPost._id)
-        : currentPost._id;
+    try {
+        await connectDB();
+        const currentId = mongoose.Types.ObjectId.isValid(currentPost._id)
+            ? new mongoose.Types.ObjectId(currentPost._id)
+            : currentPost._id;
 
-    const related = await Blog.find({
-        _id: { $ne: currentId },
-        category: currentPost.category,
-        published: true
-    })
-    .limit(3)
-    .exec();
+        const related = await Blog.find({
+            _id: { $ne: currentId },
+            category: currentPost.category,
+            published: true
+        })
+        .limit(3)
+        .exec();
 
-    return JSON.parse(JSON.stringify(related.map(r => r.toObject())));
+        return JSON.parse(JSON.stringify(related.map(r => r.toObject())));
+    } catch (error) {
+        console.warn(`Failed to fetch related blog posts from DB, falling back to localState:`, error);
+        try {
+            const state = readState();
+            if (state && Array.isArray(state.blogs)) {
+                const currentIdStr = currentPost._id?.toString();
+                const related = state.blogs.filter((b: any) => {
+                    return b._id?.toString() !== currentIdStr &&
+                           b.category === currentPost.category &&
+                           b.published !== false;
+                }).slice(0, 3);
+                return JSON.parse(JSON.stringify(related));
+            }
+        } catch (fallbackError) {
+            console.error("Local related blog posts fallback failed:", fallbackError);
+        }
+        return [];
+    }
 }
 
 // Generate Metadata for SEO

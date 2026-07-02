@@ -203,32 +203,58 @@ function normalizeSummary(service: any): ServiceSummaryDto {
 }
 
 export async function getServiceDetail(identifier: string): Promise<ServiceDetailResponse | null> {
-    await connectDB();
-    
-    let query: any = { slug: identifier };
-    if (Types.ObjectId.isValid(identifier)) {
-        query = { $or: [{ slug: identifier }, { _id: new Types.ObjectId(identifier) }] };
-    }
+    try {
+        await connectDB();
+        
+        let query: any = { slug: identifier };
+        if (Types.ObjectId.isValid(identifier)) {
+            query = { $or: [{ slug: identifier }, { _id: new Types.ObjectId(identifier) }] };
+        }
 
-    const serviceDoc = await Service.findOne(query).exec();
-    if (!serviceDoc) {
+        const serviceDoc = await Service.findOne(query).exec();
+        if (!serviceDoc) {
+            return null;
+        }
+        const normalizedService = normalizeService(serviceDoc);
+        
+        // Find related services of the same category
+        const relatedDocs = await Service.find({
+            _id: { $ne: serviceDoc._id },
+            category: serviceDoc.category
+        })
+        .limit(4)
+        .exec();
+
+        const related = relatedDocs.map(normalizeSummary);
+
+        return {
+            service: normalizedService,
+            relatedServices: related,
+        };
+    } catch (error) {
+        console.warn(`Failed to fetch service detail for ${identifier} from DB, falling back to localState:`, error);
+        try {
+            const state = readState();
+            if (state && Array.isArray(state.services)) {
+                const serviceDoc = state.services.find(
+                    (s: any) => s.slug === identifier || s._id?.toString() === identifier
+                );
+                if (serviceDoc) {
+                    const normalizedService = normalizeService(serviceDoc);
+                    const relatedDocs = state.services.filter(
+                        (s: any) => s._id?.toString() !== serviceDoc._id?.toString() && s.category === serviceDoc.category
+                    ).slice(0, 4);
+                    const related = relatedDocs.map(normalizeSummary);
+                    return {
+                        service: normalizedService,
+                        relatedServices: related,
+                    };
+                }
+            }
+        } catch (fallbackError) {
+            console.error("Local service detail fallback failed:", fallbackError);
+        }
         return null;
     }
-    const normalizedService = normalizeService(serviceDoc);
-    
-    // Find related services of the same category
-    const relatedDocs = await Service.find({
-        _id: { $ne: serviceDoc._id },
-        category: serviceDoc.category
-    })
-    .limit(4)
-    .exec();
-
-    const related = relatedDocs.map(normalizeSummary);
-
-    return {
-        service: normalizedService,
-        relatedServices: related,
-    };
 }
 

@@ -10,18 +10,31 @@ export const dynamic = 'force-dynamic';
 
 async function getImageResponse(targetUrl: string) {
     if (targetUrl.startsWith('http')) {
-        const response = await fetch(targetUrl);
-        if (!response.ok) {
-            throw new Error(`Failed to fetch external image: ${response.status}`);
-        }
-        const arrayBuffer = await response.arrayBuffer();
-        const contentType = response.headers.get('content-type') || 'image/jpeg';
-        return new Response(Buffer.from(arrayBuffer), {
-            headers: {
-                'Content-Type': contentType,
-                'Cache-Control': 'public, max-age=31536000, immutable',
+        try {
+            let response = await fetch(targetUrl);
+            if (!response.ok) {
+                console.warn(`External image returned ${response.status} for ${targetUrl}, using placeholder`);
+                response = await fetch('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80');
             }
-        });
+            const arrayBuffer = await response.arrayBuffer();
+            const contentType = response.headers.get('content-type') || 'image/jpeg';
+            return new Response(Buffer.from(arrayBuffer), {
+                headers: {
+                    'Content-Type': contentType,
+                    'Cache-Control': 'public, max-age=31536000, immutable',
+                }
+            });
+        } catch (e) {
+            console.error(`Error fetching external image, using placeholder:`, e);
+            const response = await fetch('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80');
+            const arrayBuffer = await response.arrayBuffer();
+            return new Response(Buffer.from(arrayBuffer), {
+                headers: {
+                    'Content-Type': 'image/jpeg',
+                    'Cache-Control': 'public, max-age=31536000, immutable',
+                }
+            });
+        }
     } else {
         const cleanPath = targetUrl.startsWith('/') ? targetUrl.substring(1) : targetUrl;
         const filePath = join(process.cwd(), 'public', cleanPath);
@@ -56,45 +69,49 @@ export async function GET(request: Request, props: { params: Promise<{ id: strin
     const params = await props.params;
     const id = params.id;
     try {
-        await connectDB();
-        const db = mongoose.connection.db;
-        if (db && id.match(/^[0-9a-fA-F]{24}$/)) {
-            const objectId = new mongoose.Types.ObjectId(id);
-            const file = await db.collection('images.files').findOne({ _id: objectId });
-            if (file) {
-                const bucket = new GridFSBucket(db, { bucketName: 'images' });
-                const downloadStream = bucket.openDownloadStream(objectId);
-                const contentType = file.metadata?.contentType || 'image/jpeg';
-                // @ts-ignore
-                return new Response(downloadStream, {
-                    headers: {
-                        'Content-Type': contentType,
-                        'Cache-Control': 'public, max-age=31536000, immutable',
-                    }
-                });
+        try {
+            await connectDB();
+            const db = mongoose.connection.db;
+            if (db && id.match(/^[0-9a-fA-F]{24}$/)) {
+                const objectId = new mongoose.Types.ObjectId(id);
+                const file = await db.collection('images.files').findOne({ _id: objectId });
+                if (file) {
+                    const bucket = new GridFSBucket(db, { bucketName: 'images' });
+                    const downloadStream = bucket.openDownloadStream(objectId);
+                    const contentType = file.metadata?.contentType || 'image/jpeg';
+                    // @ts-ignore
+                    return new Response(downloadStream, {
+                        headers: {
+                            'Content-Type': contentType,
+                            'Cache-Control': 'public, max-age=31536000, immutable',
+                        }
+                    });
+                }
             }
-        }
 
-        // Fallback to query GridFS files collection by slug/filename
-        if (db) {
-            const fileBySlug = await db.collection('images.files').findOne({
-                $or: [
-                    { 'metadata.slug': id },
-                    { filename: id }
-                ]
-            });
-            if (fileBySlug) {
-                const bucket = new GridFSBucket(db, { bucketName: 'images' });
-                const downloadStream = bucket.openDownloadStream(fileBySlug._id);
-                const contentType = fileBySlug.metadata?.contentType || 'image/jpeg';
-                // @ts-ignore
-                return new Response(downloadStream, {
-                    headers: {
-                        'Content-Type': contentType,
-                        'Cache-Control': 'public, max-age=31536000, immutable',
-                    }
+            // Fallback to query GridFS files collection by slug/filename
+            if (db) {
+                const fileBySlug = await db.collection('images.files').findOne({
+                    $or: [
+                        { 'metadata.slug': id },
+                        { filename: id }
+                    ]
                 });
+                if (fileBySlug) {
+                    const bucket = new GridFSBucket(db, { bucketName: 'images' });
+                    const downloadStream = bucket.openDownloadStream(fileBySlug._id);
+                    const contentType = fileBySlug.metadata?.contentType || 'image/jpeg';
+                    // @ts-ignore
+                    return new Response(downloadStream, {
+                        headers: {
+                            'Content-Type': contentType,
+                            'Cache-Control': 'public, max-age=31536000, immutable',
+                        }
+                    });
+                }
             }
+        } catch (dbError) {
+            console.warn('Database failed in images/[id] API, will use static fallback:', dbError);
         }
 
         // Fallback for static assets and curated premium yachting images

@@ -85,9 +85,9 @@ function localizeBlogs(blogs: BlogRecord[], lang: string | null) {
 }
 
 export async function GET(request: NextRequest) {
+    const preferredLang = request.nextUrl.searchParams.get('lang');
     try {
         await connectDB();
-        const preferredLang = request.nextUrl.searchParams.get('lang');
         const blogs = await Blog.find({ published: true }).exec();
 
         const normalized = normalizeBlogs(blogs as any);
@@ -99,7 +99,22 @@ export async function GET(request: NextRequest) {
             },
         });
     } catch (error) {
-        console.error('Failed to fetch blogs:', error);
+        console.warn('Failed to fetch blogs from DB, falling back to localState:', error);
+        try {
+            const state = readState();
+            if (state && Array.isArray(state.blogs)) {
+                const publishedBlogs = state.blogs.filter((b: any) => b.published !== false);
+                const normalized = normalizeBlogs(publishedBlogs as any);
+                return NextResponse.json(localizeBlogs(normalized, preferredLang), {
+                    headers: {
+                        'Cache-Control': 'no-store, no-cache, must-revalidate',
+                        'Pragma': 'no-cache',
+                    },
+                });
+            }
+        } catch (fallbackError) {
+            console.error('Local blogs fallback failed:', fallbackError);
+        }
         return NextResponse.json({ error: 'Failed to fetch blogs' }, { status: 500 });
     }
 }

@@ -1,5 +1,6 @@
 import connectDB from "@/lib/db";
 import PageSection from "@/models/PageSection";
+import { readState } from "@/lib/localDbHelper";
 
 export async function getPageSections(page: string) {
   try {
@@ -20,7 +21,28 @@ export async function getPageSections(page: string) {
     });
     return result;
   } catch (error) {
-    console.error(`Error fetching ${page} sections:`, error);
+    console.warn(`Error fetching ${page} sections from DB, falling back to localState:`, error);
+    try {
+      const state = readState();
+      const localSections = state.pageSections?.[page];
+      if (localSections) {
+        const result: Record<string, any> = {};
+        Object.entries(localSections).forEach(([key, val]: [string, any]) => {
+          result[key] = {
+            _id: `${page}-${key}`,
+            page,
+            key,
+            label: key,
+            order: 0,
+            enabled: true,
+            content: val
+          };
+        });
+        return result;
+      }
+    } catch (fallbackError) {
+      console.error("Local pageSections fallback failed:", fallbackError);
+    }
     return null;
   }
 }

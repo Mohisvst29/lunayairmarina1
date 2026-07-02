@@ -74,9 +74,9 @@ function localizeServices(services: ServiceRecord[], lang: string | null) {
 }
 
 export async function GET(request: NextRequest) {
+    const preferredLang = request.nextUrl.searchParams.get('lang');
     try {
         await connectDB();
-        const preferredLang = request.nextUrl.searchParams.get('lang');
         const services = await Service.find().sort({ order: 1 }).exec();
 
         console.log('Fetched parent services from MongoDB:', services.length);
@@ -85,7 +85,16 @@ export async function GET(request: NextRequest) {
 
         return NextResponse.json(localizeServices(normalized, preferredLang));
     } catch (error) {
-        console.error('Failed to fetch public services:', error);
+        console.warn('Failed to fetch public services from DB, falling back to localState:', error);
+        try {
+            const state = readState();
+            if (state && Array.isArray(state.services)) {
+                const normalized = normalizeServices(state.services as any);
+                return NextResponse.json(localizeServices(normalized, preferredLang));
+            }
+        } catch (fallbackError) {
+            console.error('Local services fallback failed:', fallbackError);
+        }
         return NextResponse.json({ error: 'Failed to fetch services' }, { status: 500 });
     }
 }

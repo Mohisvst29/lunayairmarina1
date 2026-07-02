@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/lib/db";
 import HomeSection from "@/models/HomeSection";
+import { readState } from "@/lib/localDbHelper";
 
 export async function GET() {
   try {
@@ -9,8 +10,16 @@ export async function GET() {
     console.log("Fetching DB home sections:", sections.length);
     return NextResponse.json(sections);
   } catch (error) {
-    console.error("Failed to fetch home sections from DB:", error);
-    return NextResponse.json([], { status: 500 });
+    console.warn("Failed to fetch home sections from DB, falling back to localState:", error);
+    try {
+      const state = readState();
+      if (state && Array.isArray(state.homeSections)) {
+        return NextResponse.json(state.homeSections);
+      }
+    } catch (fallbackError) {
+      console.error("Local state fallback failed:", fallbackError);
+    }
+    return NextResponse.json([]);
   }
 }
 
